@@ -2,14 +2,25 @@
 
     ul {
         font-size: rem(16px);
-        ul {
-            font-size: rem(14px);
-            padding-left: 20px;
+        li {
+            margin-bottom: 30px;
+            ul {
+                font-size: rem(14px);
+                padding-left: 20px;
+                li {
+                    margin-bottom: 0;
+                }
+            }
+
+            .disclaimer {
+                text-align: left;
+            }
         }
+        
     }
 
     .disclaimer {
-        padding-left: 20px;
+        padding: 0 0 10px 20px;
         display: block;
         font-size: rem(12px);
         color: $color-demo-specific-grey-med;

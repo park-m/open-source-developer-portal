@@ -2,10 +2,11 @@
     &__colors {
         margin-bottom: 20px;
 
-        & > div{
+        & > li {
             width: 100%;
             height: 32px;
             border-bottom: 1px solid $color-demo-specific-black;
+            font-size: rem(14px);
 
             span {
                 margin: 2px 5px;
@@ -27,7 +28,7 @@
 
                 &:last-child {
                     min-width: 160px;
-                    @include breakpoint($SIZE_MOBILE) {
+                    @include breakpoint($size-mobile) {
                         display: none;
                     }
                 }

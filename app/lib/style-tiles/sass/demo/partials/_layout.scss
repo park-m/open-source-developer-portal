@@ -4,9 +4,9 @@
 body {
     &:before{
         content:"desktop"; display: none;
-        @include breakpoint($SIZE_TABLET) { content:"tablet"; }
-        @include breakpoint($SIZE_MOBILE) { content:"mobile"; }
-        @include breakpoint-landscape($SIZE_MOBILE) { content:"mobile-landscape"; }
+        @include breakpoint($size-tablet) { content:"tablet"; }
+        @include breakpoint($size-mobile) { content:"mobile"; }
+        @include breakpoint-landscape($size-mobile) { content:"mobile-landscape"; }
     }
 }
 
@@ -22,6 +22,7 @@ body.demo-specific__marketing {
     &__body-wrap {
         padding: 20px;
         background-color: #eceef1;
+        position: relative;
     }
 
     &__dark-wrap {
@@ -38,14 +39,13 @@ body.demo-specific__marketing {
         width: 680px;
         margin: 0 auto;
         padding: 20px;
-        @extend .cnt;
     }
 
     &__main {
         margin: 0 20px;
         padding: 0 200px 0 0;
 
-        @include breakpoint($SIZE_MOBILE){
+        @include breakpoint($size-mobile){
             padding: 0;
         }
 
@@ -86,13 +86,13 @@ body.demo-specific__marketing {
                 width: 100%;
                 margin-bottom: 3em;
                 display: table;
-                @include breakpoint($SIZE_TABLET){
+                @include breakpoint($size-tablet){
                     display: block;
                 }
                 .row {
                     display:table-row;
                     @extend %clearfix;
-                    @include breakpoint($SIZE_TABLET){
+                    @include breakpoint($size-tablet){
                         display: block;
                     }
                     & > div {
@@ -100,7 +100,7 @@ body.demo-specific__marketing {
                         display:table-cell;
                         padding: 24px 0 24px 32px;
                         border-bottom: 1px solid $color-demo-specific-grey-light;
-                        @include breakpoint($SIZE_TABLET){
+                        @include breakpoint($size-tablet){
                             width: 100%;
                             padding: 20px 0;
                             display: block;
@@ -109,7 +109,7 @@ body.demo-specific__marketing {
                         &:first-child {
                             width: 30%;
                             background: lighten($color-demo-specific-grey-dark, 45%);
-                            @include breakpoint($SIZE_TABLET){
+                            @include breakpoint($size-tablet){
                                 width: 100%;
                                 padding: 20px 10px;
                             }
@@ -134,7 +134,7 @@ body.demo-specific__marketing {
         background: lighten($color-demo-specific-grey-light, 7%);
         border-left: 1px solid $color-demo-specific-grey;
 
-        @include breakpoint($SIZE_MOBILE){
+        @include breakpoint($size-mobile){
             width: 100%;
             padding: 0;
             position: static;
@@ -142,7 +142,7 @@ body.demo-specific__marketing {
 
         h4 {
             margin-bottom: 20px;
-            @include breakpoint($SIZE_MOBILE){
+            @include breakpoint($size-mobile){
                 display: none;
             }
         } 
@@ -151,7 +151,7 @@ body.demo-specific__marketing {
             li {
                 position: relative;
                 margin: 10px 0;
-                @include breakpoint($SIZE_MOBILE){
+                @include breakpoint($size-mobile){
                     padding: 10px 0;
                     margin: 0;
                     text-align: center;
@@ -164,7 +164,7 @@ body.demo-specific__marketing {
                     right: 0;
                     font-size: 1em;
                     font-weight: 300;
-                    @include breakpoint($SIZE_MOBILE){
+                    @include breakpoint($size-mobile){
                         content: "";
                     }
                 }
