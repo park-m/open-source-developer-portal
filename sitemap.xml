@@ -178,6 +178,9 @@
     <loc>https://developers.dwolla.com/resources/oauth-refresh-strategies/refresh-on-demand.html</loc>
   </url>
   <url>
+    <loc>https://developers.dwolla.com/resources/same-day-ach.html</loc>
+  </url>
+  <url>
     <loc>https://developers.dwolla.com/resources/sandbox-console.html</loc>
   </url>
   <url>
@@ -199,10 +202,10 @@
     <loc>https://developers.dwolla.com/resources/bank-transfer-workflow/transfer-failures.html</loc>
   </url>
   <url>
-    <loc>https://developers.dwolla.com/guides/receive-money/transfer-onboarding.html</loc>
+    <loc>https://developers.dwolla.com/guides/send-money/transfer-onboarding.html</loc>
   </url>
   <url>
-    <loc>https://developers.dwolla.com/guides/send-money/transfer-onboarding.html</loc>
+    <loc>https://developers.dwolla.com/guides/receive-money/transfer-onboarding.html</loc>
   </url>
   <url>
     <loc>https://developers.dwolla.com/guides/auth/using-an-access-token.html</loc>
