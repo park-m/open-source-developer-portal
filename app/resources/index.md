@@ -48,4 +48,8 @@ description: "Getting started with Dwolla's bank transfer API."
         <h3><a href="/resources/funding-source-verification.html">Funding source verification</a></h3>
         <p>Methods to verify funding sources, including Instant Account Verification and micro-deposits.</p>
     </li>
+    <li>
+        <h3><a href="/resources/same-day-ach.html">Same Day ACH</a></h3>
+        <p>A walkthrough of Same Day ACH and leveraging <code>next-available</code> processing times for faster transfers.</p>
+    </li>
 </ul>
