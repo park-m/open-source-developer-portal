@@ -37,7 +37,7 @@ Location: https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2
 <span class=p>}</span>
 
 <span class=c1># Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)</span>
-<span class=c1># For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)</span>
+<span class=c1># For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)</span>
 <span class=n>transfer</span> <span class=o>=</span> <span class=n>app_token</span><span class=p>.</span><span class=nf>post</span> <span class=s2>"transfers"</span><span class=p>,</span> <span class=n>request_body</span>
 <span class=n>transfer</span><span class=p>.</span><span class=nf>headers</span><span class=p>[</span><span class=ss>:location</span><span class=p>]</span> <span class=c1># =&gt; "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"</span>
 
@@ -59,7 +59,7 @@ Location: https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2
   <span class=p>}</span>
 <span class=p>};</span>
 
-<span class=c1>// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)</span>
+<span class=c1>// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)</span>
 <span class=nx>appToken</span>
   <span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=s1>'transfers'</span><span class=p>,</span> <span class=nx>requestBody</span><span class=p>)</span>
   <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>res</span> <span class=o>=&gt;</span> <span class=nx>res</span><span class=p>.</span><span class=nx>headers</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>'location'</span><span class=p>));</span> <span class=c1>// =&gt; 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'</span>
@@ -79,7 +79,7 @@ Location: https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2
 <span class=p>}</span>
 
 <span class=c># Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)</span>
-<span class=c># For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)</span>
+<span class=c># For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)</span>
 <span class=n>transfer</span> <span class=o>=</span> <span class=n>app_token</span><span class=o>.</span><span class=n>post</span><span class=p>(</span><span class=s>'transfers'</span><span class=p>,</span> <span class=n>request_body</span><span class=p>)</span>
 <span class=n>transfer</span><span class=o>.</span><span class=n>headers</span><span class=p>[</span><span class=s>'location'</span><span class=p>]</span> <span class=c># =&gt; 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'</span>
 
