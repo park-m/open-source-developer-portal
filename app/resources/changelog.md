@@ -16,7 +16,7 @@ description: "Keep track of changes to the Dwolla API and official SDKs."
 	<h3>2016-12-01</h3>
 	<h4><em>DEPRECATED</em></h4>
 	<ul class="bullet">
-	    <li>Remove the <code>scope</code> attribute from the <a href="https://docsv2.dwolla.com/#application-access-token"> application access token</a> response. </li>
+	    <li>Remove the <code>scope</code> attribute from the <a href="https://docsv2.dwolla.com/#application-authorization"> application access token</a> response. </li>
 	</ul>
 	<h3>2016-12-01</h3>
 	<h4><em>CHANGED</em></h4>

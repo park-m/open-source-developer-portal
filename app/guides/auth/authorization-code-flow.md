@@ -29,7 +29,7 @@ Requested scopes must also be enabled on your application settings, otherwise Dw
 | Transactions | Access the user's transfer data. |
 | Send | Transfer money on the user's behalf. |
 | Funding | Access names of funding sources the user has connected to Dwolla, access available balance information for Dwolla Balance, add new funding sources, verify funding sources, initiate transfers to and from funding sources. |
-| ManageCustomers | Includes create Customers, manage their funding sources, and allow related money movement. <br/> **Note:** This is a privileged scope available within our [Access API](https://www.dwolla.com/white-label?b=apidocs) (v2). While fully available in our testing environment, Access API integrations will not be permitted to launch in production without first agreeing to a paid contract. [Contact sales](https://www.dwolla.com/contact?b=apidocs) to learn more. |
+| AccountInfoFull | Includes name and Dwolla account ID |
 
 * * *
 
@@ -210,7 +210,7 @@ end
 ## Refreshing an account access token
 Because access tokens are short-lived and expire 1 hour after being issued, if you wish to maintain authorization for a user account for a duration of time longer than 1 hour, you can use the refresh token to generate a new access token and refresh token. There is no limit to the number of times you can refresh a user's access token. Nonetheless, it is important to keep in mind that upon a successful refresh your existing access token will be invalidated.
 
-**Note:** We recommend safely storing a user's refresh token, i.e. in a database, so you can use it in the future to [refresh authorization](https://docsv2.dwolla.com/#refresh-authorization). If you misplace or delete a refresh token, then you will need to repeat the OAuth flow starting from the first step described above.
+**Note:** We recommend safely storing a user's refresh token, i.e. in a database, so you can use it in the future to [refresh authorization](https://docsv2.dwolla.com/transfer/#refresh-account-authorization). If you misplace or delete a refresh token, then you will need to repeat the OAuth flow starting from the first step described above.
 
 ##### HTTP request
 `POST https://www.dwolla.com/oauth/v2/token`

@@ -74,7 +74,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 transfer_url = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)
+# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 transfer = account_token.get transfer_url
 transfer.status # => "failed"
 
@@ -87,7 +87,7 @@ transfer = DwollaSwagger::TransfersApi.by_id('https://api-uat.dwolla.com/transfe
 ```javascript
 var transferUrl = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
 
-// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)
+// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 accountToken
   .get(transferUrl)
   .then(res => res.body.status); // => 'failed'
@@ -96,7 +96,7 @@ accountToken
 transfer_url = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)
+# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 fees = account_token.get(transfer_url)
 fees.body['status'] # => 'failed'
 
@@ -137,7 +137,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 transfer_url = 'https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
-# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)
+# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 failure = account_token.get "#{transfer_url}/failure"
 failure.code # => "R1"
 ```
@@ -155,14 +155,14 @@ print($failureReason->status); # => "R01"
 transfer_url = 'https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)
+# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 failure = account_token.get('%s/failure' % transfer_url)
 failure.body['code'] # => 'R1'
 ```
 ```javascript
 var transferUrl = 'https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
 
-// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-access-token)
+// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 accountToken
   .get(`${transferUrl}/failure`)
   .then(res => res.body.code); // => 'R1'
