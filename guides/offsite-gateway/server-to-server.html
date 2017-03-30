@@ -98,7 +98,7 @@ Content-Type: application/json
      <span class=k>if</span> <span class=p>(</span><span class=nx>err</span><span class=p>)</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>err</span><span class=p>);</span>
 
       <span class=c1>// example checkout result:</span>
-      <span class=c1>// { checkoutURL: 'https://uat.dwolla.com/payment/checkout/d0429a55-c338-4139-b273-48d2f8c45693',</span>
+      <span class=c1>// { checkoutURL: 'https://sandbox.dwolla.com/payment/checkout/d0429a55-c338-4139-b273-48d2f8c45693',</span>
       <span class=c1>//   checkoutId: 'd0429a55-c338-4139-b273-48d2f8c45693' }</span>
 
      <span class=nx>res</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span><span class=nx>util</span><span class=p>.</span><span class=nx>format</span><span class=p>(</span><span class=s1>'Checkout created.  Click to continue: &lt;a href="%s"&gt;%s&lt;/a&gt;'</span><span class=p>,</span> <span class=nx>checkout</span><span class=p>.</span><span class=nx>checkoutURL</span><span class=p>,</span> <span class=nx>checkout</span><span class=p>.</span><span class=nx>checkoutURL</span><span class=p>));</span>
