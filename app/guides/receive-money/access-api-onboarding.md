@@ -19,7 +19,7 @@ Your application will exchange its `client_id`, `client_secret`, and `grant_type
 Create a Customer for the user that is going to pay you. At a minimum, provide the user’s full name and email address to create the customer. 
 
 ```raw
-POST https://api-uat.dwolla.com/customers
+POST https://api-sandbox.dwolla.com/customers
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
@@ -32,7 +32,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c
+Location: https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c
 ```
 ```ruby
 request_body = {
@@ -44,11 +44,11 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 new_customer = account_token.post "customers", request_body
-new_customer.headers[:location] # => "https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
+new_customer.headers[:location] # => "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 new_customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-p new_customer # => "https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
+p new_customer # => "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
 ```
 ```javascript
 var requestBody = {
@@ -61,7 +61,7 @@ var requestBody = {
 accountToken
   .post('customers', requestBody)
   .then(function(res) {
-    res.headers.get('location'); // => 'https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
+    res.headers.get('location'); // => 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
   });
 ```
 ```python
@@ -74,12 +74,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 new_customer = account_token.post('customers', request_body)
-new_customer.headers['location'] # => 'https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
+new_customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 customers_api = dwollaswagger.CustomersApi(client)
 new_customer = customers_api.create(body = request_body)
-print(new_customer) # => 'https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
+print(new_customer) # => 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
 ```
 ```php
 <?php
@@ -92,7 +92,7 @@ $new_customer = $customersApi->create([
   'ipAddress' => '99.99.99.99'
 ]);
 
-print($new_customer); # => https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c
+print($new_customer); # => https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c
 ?>
 ```
 ```java
@@ -107,7 +107,7 @@ myNewCust.setIpAddress("99.99.99.99");
 
 try {
     Unit$ r = cApi.create(myNewCust);
-    System.out.println(r.getLocationHeader()); // => https://api-uat.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C
+    System.out.println(r.getLocationHeader()); // => https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C
 }
 catch (Exception e) {
     System.out.println("Something's up!");
@@ -129,20 +129,20 @@ curl -X POST
 \ -H "Content-Type: application/vnd.dwolla.v1.hal+json"
 \ -H "Accept: application/vnd.dwolla.v1.hal+json"
 \ -H "Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q"
-\ "https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c/iav-token"
+\ "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c/iav-token"
 
 HTTP/1.1 200 OK
 {  
    "_links":{  
       "self":{  
-         "href":"https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c/iav-token"
+         "href":"https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c/iav-token"
       }
    },
    "token":"lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 }
 ```
 ```ruby
-customer_url = 'https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
+customer_url = 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = account_token.post "#{customer_url}/iav-token"
@@ -154,7 +154,7 @@ customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var customerUrl = 'https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c';
 
 accountToken
   .post(`${customerUrl}/iav-token`)
@@ -178,7 +178,7 @@ print token['token'] # => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
-$fsToken = $customersApi->getCustomerIavToken("https://api-uat.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c");
+$fsToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c");
 $fsToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ?>
 ```
@@ -207,7 +207,7 @@ Now that you have `dwolla.js` initialized on the page and the container created 
 <script type="text/javascript">
 $('#start').click(function() {
   var iavToken = '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY';
-  dwolla.configure('uat');
+  dwolla.configure('sandbox');
   dwolla.iav.start(iavToken, {
           container: 'iavContainer',
           stylesheets: [
@@ -225,7 +225,7 @@ $('#start').click(function() {
 
 The customer will complete the IAV flow by authenticating with their online banking credentials. You'll know their bank account was successfully added and verified if you receive a JSON response in your callback that includes a link to the newly created funding source. 
 
-* Sample response:  `{"_links":{"funding-source":{"href":"https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}`
+* Sample response:  `{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}`
 
 Great! The funding source should now be verified.
 
@@ -234,17 +234,17 @@ Great! The funding source should now be verified.
 Once the customer has verified their funding source, we can transfer funds from their bank account to your Dwolla account. You’ll need to supply your access token from step A, the customer’s ID from step B, and the customer’s funding source ID from step C:
 
 ```raw
-POST https://api-uat.dwolla.com/transfers
+POST https://api-sandbox.dwolla.com/transfers
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 {
     "_links": {
         "source": {
-            "href": "https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
+            "href": "https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
         },
         "destination": {
-            "href": "https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
+            "href": "https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
         }
     },
     "amount": {
@@ -254,16 +254,16 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+Location: https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ```
 ```ruby
 request_body = {
   :_links => {
     :source => {
-      :href => "https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
+      :href => "https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
     },
     :destination => {
-      :href => "https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
+      :href => "https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
     }
   },
   :amount => {
@@ -288,10 +288,10 @@ transfer # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b
 var requestBody = {
   _links: {
     source: {
-      href: 'https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197'
+      href: 'https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197'
     },
     destination: {
-      href: 'https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
+      href: 'https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
     }
   },
   amount: {
@@ -314,10 +314,10 @@ accountToken
 request_body = {
   '_links': {
     'source': {
-      'href': 'https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197'
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197'
     },
     'destination': {
-      'href': 'https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
+      'href': 'https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
     }
   },
   'amount': {
@@ -346,11 +346,11 @@ $transfer_request = array (
   array (
     'source' => 
     array (
-      'href' => 'https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197',
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197',
     ),
     'destination' => 
     array (
-      'href' => 'https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c',
+      'href' => 'https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c',
     ),
   ),
   'amount' => 
@@ -363,7 +363,7 @@ $transfer_request = array (
 $transferApi = new DwollaSwagger\TransfersApi($apiClient);
 $myAccount = $transferApi->create($transfer_request);
 
-print($xfer); # => https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+print($xfer); # => https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ?>
 ```
 

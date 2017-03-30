@@ -24,7 +24,7 @@ Be sure to request the `Send` and `Funding` scopes in the initial authorization 
 
 **Example URL:**
 
-`https://uat.dwolla.com/oauth/v2/authenticate?client_id=PO%2BSzGAsZCE4BTG7Cw4OAL40Tpf1008mDjGBSVo6QLNfM4mD%2Ba&response_type=code&redirect_uri=https://example.com/return&scope=Send%7CTransactions%7CFunding&dwolla_landing=register`
+`https://sandbox.dwolla.com/oauth/v2/authenticate?client_id=PO%2BSzGAsZCE4BTG7Cw4OAL40Tpf1008mDjGBSVo6QLNfM4mD%2Ba&response_type=code&redirect_uri=https://example.com/return&scope=Send%7CTransactions%7CFunding&dwolla_landing=register`
 
 ### Step B. Redirect back to your application and generate access token
 
@@ -35,7 +35,7 @@ The customer will complete their account registration and attach a verified fund
 `https://example.com/return?code=sZCE4BTG7Cw4O`
 
 ```rawnoselect
-POST https://uat.dwolla.com/oauth/v2/token
+POST https://sandbox.dwolla.com/oauth/v2/token
 Content-Type: application/json
 
 {
@@ -53,7 +53,7 @@ Content-Type: application/json
 {
   "_links": {
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
     }
   },
   "access_token": "2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW",
@@ -73,7 +73,7 @@ Using the access token we just received, we’ll need to get the funding source 
 Use the [List an account's funding sources](https://docsv2.dwolla.com/transfer/#list-funding-sources-for-an-account) endpoint to fetch a list of the payer’s funding sources.  You first need to fetch [the root](https://docsv2.dwolla.com/transfer/#root) resource to determine the URL to get the account’s funding source list from.
 
 ```raw
-GET https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
+GET https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 
@@ -82,7 +82,7 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
     }
   },
   "_embedded": {
@@ -90,10 +90,10 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
       {
         "_links": {
           "self": {
-            "href": "https://api-uat.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+            "href": "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
           },
           "account": {
-            "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+            "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
           }
         },
         "id": "04173e17-6398-4d36-a167-9d98c4b1f1c3",
@@ -140,7 +140,7 @@ funding_sources = fs_api.get_account_funding_sources(account_url)
 funding_sources._embedded['funding-sources'][0]['name'] # => Joe Buyer - Checking 1234
 ```
 ```javascript
-var accountUrl = 'https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
+var accountUrl = 'https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
 
 accountToken
   .get(`${accountUrl}/funding-sources`)
@@ -155,17 +155,17 @@ Finally, you can create a transfer from the payer’s bank account to your own a
 
 
 ```raw
-POST https://api-uat.dwolla.com/transfers
+POST https://api-sandbox.dwolla.com/transfers
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 {
     "_links": {
         "source": {
-            "href": "https://api-uat.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+            "href": "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
         },
         "destination": {
-            "href": "https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
+            "href": "https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
         }
     },
     "amount": {
@@ -175,7 +175,7 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+Location: https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ```
 ```ruby
 request_body = {
@@ -253,12 +253,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 transfer = account_token.post('transfers', request_body)
-transfer.headers['location'] # => 'https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer.headers['location'] # => 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 transfers_api = dwollaswagger.TransfersApi(client)
 transfer = transfers_api.create(body = request_body)
-transfer # => 'https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer # => 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 ```
 ```php
 <?php
@@ -267,11 +267,11 @@ $transfer_request = array (
   array (
     'source' => 
     array (
-      'href' => 'https://api-uat.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3',
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3',
     ),
     'destination' => 
     array (
-      'href' => 'https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c',
+      'href' => 'https://api-sandbox.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c',
     ),
   ),
   'amount' => 
@@ -284,7 +284,7 @@ $transfer_request = array (
 $transferApi = new DwollaSwagger\TransfersApi($apiClient);
 $myAccount = $transferApi->create($transfer_request);
 
-print($xfer); # => https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+print($xfer); # => https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ?>
 ```
 

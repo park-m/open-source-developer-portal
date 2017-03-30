@@ -26,16 +26,16 @@ The `topic` field of an event holds [a description](http://docsv2.dwolla.com/#ev
   "timestamp": "2017-01-20T22:45:12.790Z",
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/events/cac95329-9fa5-42f1-a4fc-c08af7b868fb"
+      "href": "https://api-sandbox.dwolla.com/events/cac95329-9fa5-42f1-a4fc-c08af7b868fb"
     },
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254"
+      "href": "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254"
     },
     "resource": {
-      "href": "https://api-uat.dwolla.com/transfers/cdb5f11f-62df-e611-80ee-0aa34a9b2388"
+      "href": "https://api-sandbox.dwolla.com/transfers/cdb5f11f-62df-e611-80ee-0aa34a9b2388"
     },
     "customer": {
-      "href": "https://api-uat.dwolla.com/customers/e358a488-6699-4d79-bbfb-c5bf58100ea4"
+      "href": "https://api-sandbox.dwolla.com/customers/e358a488-6699-4d79-bbfb-c5bf58100ea4"
     }
   },
   "created": "2017-01-20T22:45:12.790Z"

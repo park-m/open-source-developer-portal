@@ -22,7 +22,7 @@ Create a URL to send the user to in order to create a new Dwolla Direct account.
 
 ##### Example URL:
 
-`https://uat.dwolla.com/oauth/v2/authenticate?client_id=PO%2BSzGAsZCE4BTG7Cw4OAL40Tpf1008mDjGBSVo6QLNfM4mD%2Ba&response_type=code&redirect_uri=https://example.com/return&scope=Transactions%7CFunding&dwolla_landing=register`
+`https://sandbox.dwolla.com/oauth/v2/authenticate?client_id=PO%2BSzGAsZCE4BTG7Cw4OAL40Tpf1008mDjGBSVo6QLNfM4mD%2Ba&response_type=code&redirect_uri=https://example.com/return&scope=Transactions%7CFunding&dwolla_landing=register`
 
 ### Step B: Redirect back to your application
 
@@ -33,7 +33,7 @@ The user is then redirected back to your application with an authorization code.
 `https://example.com/return?code=sZCE4BTG7Cw4O`
 
 ```rawnoselect
-POST https://uat.dwolla.com/oauth/v2/token
+POST https://sandbox.dwolla.com/oauth/v2/token
 Content-Type: application/json
 
 {
@@ -51,7 +51,7 @@ Content-Type: application/json
 {
   "_links": {
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1"
+      "href": "https://api-sandbox.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1"
     }
   },
   "access_token": "2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW",
@@ -70,7 +70,7 @@ You don't need to use the access token for the Dwolla Direct user in order to tr
 
 Next, you’ll need to generate an access token for your own account, which you’ll use to transfer funds from your account to the newly created Direct account.
 
-Navigate to the <a href="https://dashboard-uat.dwolla.com/applications" target="_blank">applications page</a> to generate an account access token. 
+Navigate to the <a href="https://dashboard-sandbox.dwolla.com/applications" target="_blank">applications page</a> to generate an account access token. 
 
 Before selecting the "Create token" button, make sure your created application has at least the `Send` and `Funding` scopes in order to send funds from your own account. Once you select the Create token button, you'll receive an access and refresh token pair that contains the proper scopes for sending money. More detail for implementing the OAuth flow can be found in [API docs](http://localhost:4567/transfer/#authorization). **Important:** this access token will allow you to send money from your own account, so be sure to securely store it.
 

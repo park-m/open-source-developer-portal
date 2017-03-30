@@ -14,7 +14,7 @@ You can check the status of the newly created transfer by retrieving the transfe
 
 #### Request and response (view schema in `raw`)
 ```raw
-GET https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+GET https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -23,13 +23,13 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/D76265CD-0951-E511-80DA-0AA34A9B2388"
+      "href": "https://api-sandbox.dwolla.com/transfers/D76265CD-0951-E511-80DA-0AA34A9B2388"
     },
     "source": {
-      "href": "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+      "href": "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
     },
     "destination": {
-      "href": "https://api-uat.dwolla.com/customers/C7F300C0-F1EF-4151-9BBE-005005AC3747"
+      "href": "https://api-sandbox.dwolla.com/customers/C7F300C0-F1EF-4151-9BBE-005005AC3747"
     }
   },
   "id": "D76265CD-0951-E511-80DA-0AA34A9B2388",
@@ -42,7 +42,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 }
 ```
 ```ruby
-transfer_url = 'https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)

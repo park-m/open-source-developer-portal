@@ -15,7 +15,7 @@ Next you will attach a verified funding source for Joe Buyer, which will be done
 ##### Generate a single-use IAV token for our Customer, Joe Buyer:
 
 ```raw
-POST https://api-uat.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C/iav-token
+POST https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C/iav-token
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -25,14 +25,14 @@ HTTP/1.1 200 OK
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C/iav-token"
+      "href": "https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C/iav-token"
     }
   },
   "token": "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 }
 ```
 ```ruby
-customer_url = 'https://api-uat.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
+customer_url = 'https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "#{customer_url}/iav-token"
@@ -44,7 +44,7 @@ customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var customerUrl = 'https://api-uat.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C';
 
 appToken
   .post(`${customerUrl}/iav-token`)
@@ -61,7 +61,7 @@ print token['token'] # => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
-$fsToken = $customersApi->getCustomerIavToken("https://api-uat.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C");
+$fsToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C");
 $fsToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ?>
 ```
@@ -108,7 +108,7 @@ $('#start').click(function() {
 
 Joe Buyer will complete the IAV flow by authenticating with his online banking credentials. You'll know his bank account was successfully added and verified if you receive a JSON response in your callback that includes a link to the newly created funding source. 
 
-* Sample response:  `{"_links":{"funding-source":{"href":"https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}`
+* Sample response:  `{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}`
 
 Great! Joe Buyer’s funding source is now verified and ready to send money.
 

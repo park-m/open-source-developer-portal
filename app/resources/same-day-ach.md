@@ -28,7 +28,7 @@ Your application can initiate a transfer from a Dwolla balance prior to 12:00PM 
 ### Creating a Customer and attaching a bank account
 Before you can initiate a transfer using same day clearing, you must first have a [Customer created](https://docsv2.dwolla.com/#create-a-customer) and a [funding source](https://docsv2.dwolla.com/#create-a-funding-source-for-a-customer) attached for the user receiving the Same Day ACH credit. 
 
-Once your customer has connected a bank account, you'll then want to store the funding source id (e.g. `https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f`) which will be used when specifying the bank account as the destination href in the request to the [Transfers API](https://docsv2.dwolla.com/#initiate-a-transfer).
+Once your customer has connected a bank account, you'll then want to store the funding source id (e.g. `https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f`) which will be used when specifying the bank account as the destination href in the request to the [Transfers API](https://docsv2.dwolla.com/#initiate-a-transfer).
 
 ### Initiating a Same Day ACH credit transfer
 In order to initiate a transfer with Same Day processing, an optional `clearing` JSON object must be included in the transfer request. The clearing object contains `source` and `destination` keys with respective values of `standard` or `next-available`. 
@@ -38,7 +38,7 @@ Specifying the destination clearing as `next-available` will allow requests to d
 The following example assumes the sending party has a verified account and a verified funding source. We're sending a payout from our Dwolla account balance to our Customer’s funding source which represents the receiving bank account.
 
 ```raw
-POST https://api-uat.dwolla.com/transfers
+POST https://api-sandbox.dwolla.com/transfers
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -47,10 +47,10 @@ Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
 {
     "_links": {
         "source": {
-            "href": "https://api-uat.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7"
+            "href": "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7"
         },
         "destination": {
-            "href": "https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f"
+            "href": "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f"
         }
     },
     "amount": {
@@ -65,16 +65,16 @@ Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
 ...
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388
+Location: https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388
 ```
 ```ruby
 request_body = {
   :_links => {
     :source => {
-      :href => "https://api-uat.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7"
+      :href => "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7"
     },
     :destination => {
-      :href => "https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f"
+      :href => "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f"
     }
   },
   :amount => {
@@ -92,7 +92,7 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = app_token.post "transfers", request_body
-transfer.headers[:location] # => "https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
+transfer.headers[:location] # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
 ```
 ```php
 <?php
@@ -101,10 +101,10 @@ $transfersApi = new DwollaSwagger\TransfersApi($apiClient);
 $transfer = $transfersApi->create([
   '_links' => [
     'source' => [
-      'href' => 'https://api-uat.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7',
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7',
     ],
     'destination' => [
-      'href' => 'https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
     ]
   ],
   'amount' => [
@@ -119,17 +119,17 @@ $transfer = $transfersApi->create([
     'destination' => 'next-available'
   ]
 ]);
-$transfer; # => "https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
+$transfer; # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
 ?>
 ```
 ```python
 request_body = {
   '_links': {
     'source': {
-      'href': 'https://api-uat.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7'
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7'
     },
     'destination': {
-      'href': 'https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
     }
   },
   'amount': {
@@ -147,16 +147,16 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 transfer = app_token.post('transfers', request_body)
-transfer.headers['location'] # => 'https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
+transfer.headers['location'] # => 'https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
 ```
 ```javascript
 var requestBody = {
   _links: {
     source: {
-      href: 'https://api-uat.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7'
+      href: 'https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7'
     },
     destination: {
-      href: 'https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
+      href: 'https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
     }
   },
   amount: {
@@ -182,7 +182,7 @@ appToken
 When retrieving the [transfer from the API](https://docsv2.dwolla.com/#retrieve-a-transfer), the response should contain the clearing object with a `destination` key and a value of either `same-day` or `next-day` depending on if the transfer was initiated prior to the last same day processing window and the transfer amount is less than $25,000 (as mentioned above). 
 
 ```raw
-GET https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388
+GET https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -191,32 +191,32 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
   "_links": {
     "source": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254",
+      "href": "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "account"
     },
     "destination-funding-source": {
-      "href": "https://api-uat.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
+      "href": "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "funding-source"
     },
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388",
+      "href": "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "transfer"
     },
     "funded-transfer": {
-      "href": "https://api-uat.dwolla.com/transfers/646de847-7d02-e711-80ee-0aa34a9b2388",
+      "href": "https://api-sandbox.dwolla.com/transfers/646de847-7d02-e711-80ee-0aa34a9b2388",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "transfer"
     },
     "source-funding-source": {
-      "href": "https://api-uat.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
+      "href": "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "funding-source"
     },
     "destination": {
-      "href": "https://api-uat.dwolla.com/customers/99dd22de-6ec6-4ba1-a0d1-09eb169a4bb1",
+      "href": "https://api-sandbox.dwolla.com/customers/99dd22de-6ec6-4ba1-a0d1-09eb169a4bb1",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "customer"
     }
@@ -234,7 +234,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 }
 ```
 ```ruby
-transfer_url = 'https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = app_token.get transfer_url
@@ -242,7 +242,7 @@ transfer.status # => "processed"
 ```
 ```php
 <?php
-$transferUrl = 'https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388';
+$transferUrl = 'https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388';
 
 $transfersApi = new DwollaSwagger\TransfersApi($apiClient);
 
@@ -251,14 +251,14 @@ $transfer->status; # => "processed"
 ?>
 ```
 ```python
-transfer_url = 'https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 transfer = app_token.get(transfer_url)
 transfer.body['status'] # => 'processed'
 ```
 ```javascript
-var transferUrl = 'https://api-uat.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388';
+var transferUrl = 'https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388';
 
 appToken
   .get(transferUrl)

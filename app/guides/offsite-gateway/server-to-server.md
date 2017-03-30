@@ -160,7 +160,7 @@ app.get('/', function(req, res) {
      if (err) console.log(err);
 
       // example checkout result:
-      // { checkoutURL: 'https://uat.dwolla.com/payment/checkout/d0429a55-c338-4139-b273-48d2f8c45693',
+      // { checkoutURL: 'https://sandbox.dwolla.com/payment/checkout/d0429a55-c338-4139-b273-48d2f8c45693',
       //   checkoutId: 'd0429a55-c338-4139-b273-48d2f8c45693' }
 
      res.send(util.format('Checkout created.  Click to continue: <a href="%s">%s</a>', checkout.checkoutURL, checkout.checkoutURL));

@@ -27,7 +27,7 @@ By default, Dwolla Direct account creation is enabled. If your application will 
 
 ##### Example URL format:
 
-`https://uat.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}&dwolla_landing=register`
+`https://sandbox.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}&dwolla_landing=register`
 
 #### Step 1: Redirect the user to Dwolla
 From your application, the user is presented with Dwolla OAuth in a pop-up, or their window is redirected. 

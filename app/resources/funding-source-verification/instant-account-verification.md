@@ -37,7 +37,7 @@ HTTP/1.1 200 OK
 }
 ```
 ```ruby
-customer_url = 'https://api-uat.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
+customer_url = 'https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = account_token.post "#{customer_url}/iav-token"
@@ -49,7 +49,7 @@ customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var customerUrl = 'https://api-uat.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6';
 
 accountToken
   .post(`${customerUrl}/iav-token`)
@@ -68,7 +68,7 @@ print token['token'] # => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
-$fsToken = $customersApi->getCustomerIavToken("https://api-uat.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6");
+$fsToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6");
 $fsToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ?>
 ```
@@ -94,7 +94,7 @@ Next, add the container to the body of the page where you want to render the IAV
 
 
 ### Step 3: Configure and call JavaScript function to start IAV
-Now that you have initialized dwolla.js on your page you can configure and create the function that will call `dwolla.iav.start()`. For simplicity of this example, use jQuery and call the function to start IAV when the Customer clicks the "Add Bank" button on your page. To test IAV in the sandbox environment you will use the `dwolla.configure` helper function and pass in the value of `uat`. As you can see below, `dwolla.iav.start` takes three arguments: the iavContainer element where IAV will render, a string value of the single-use IAV token, and a callback function that will handle any error or response.
+Now that you have initialized dwolla.js on your page you can configure and create the function that will call `dwolla.iav.start()`. For simplicity of this example, use jQuery and call the function to start IAV when the Customer clicks the "Add Bank" button on your page. To test IAV in the sandbox environment you will use the `dwolla.configure` helper function and pass in the value of `sandbox`. As you can see below, `dwolla.iav.start` takes three arguments: the iavContainer element where IAV will render, a string value of the single-use IAV token, and a callback function that will handle any error or response.
 
 
 ```javascriptnoselect
@@ -125,7 +125,7 @@ The callback function (err, res) allows you to determine if there is an error wi
 * If there is an error: generate a new IAV token and re-attempt the IAV flow.
 	* Example: `{code: "InvalidIavToken", message: "Invalid IAV token." }`
 * If successful: You will receive a JSON response that includes a link to the newly created and verified funding source. You can then pass this value to either initiate a transfer or store the created resource in your database to be used later.
-	* Example:  `{"_links":{"funding-source":{"href":"https://api-uat.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}`
+	* Example:  `{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}`
 
 * * *
 

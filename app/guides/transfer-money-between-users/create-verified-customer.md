@@ -15,7 +15,7 @@ First, we’ll create a `Verified Customer` for Jane Merchant.
 The following information is required for a `Verified Customer`. In this example, we use business verified customers to represent the merchant who will be receiving funds. 
 
 ```raw
-POST https://api-uat.dwolla.com/customers
+POST https://api-sandbox.dwolla.com/customers
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
@@ -38,7 +38,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+Location: https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 ```
 ```ruby
 request_body = {
@@ -59,11 +59,11 @@ request_body = {
 }
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "customers", request_body
-customer.headers[:location] # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer.headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-customer # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
 ```javascript
 var requestBody = {
@@ -85,7 +85,7 @@ var requestBody = {
 
 appToken
   .post('customers', requestBody)
-  .then(res => res.headers.get('location')); // => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 ```python
 request_body = {
@@ -107,12 +107,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
-customer.headers['location'] # => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 customers_api = dwollaswagger.CustomersApi(client)
 customer = customers_api.create(body = request_body)
-customer # => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 ```php
 <?php
@@ -135,7 +135,7 @@ $new_customer = $customersApi->create([
   'ein' => '12-3456789'
 ]);
 
-print($new_customer); # => https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+print($new_customer); # => https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 ?>
 ```
 ```java
@@ -155,7 +155,7 @@ myNewCust.setDateOfBirth("1970-01-01");
 
 try {
     Unit$ r = cApi.create(myNewCust);
-    System.out.println(r.getLocationHeader()); // => https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+    System.out.println(r.getLocationHeader()); // => https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 }
 catch (Exception e) {
     System.out.println("Something's up!");

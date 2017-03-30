@@ -20,7 +20,7 @@ Your application will exchange its `client_id`, `client_secret`, and `grant_type
 Create a Customer for each user you’d like to transfer funds to. At a minimum, provide the user’s full name, and email address to create the Customer. More detail is available in [API docs](https://docsv2.dwolla.com/#create-a-customer). For the purpose of this guide we'll be creating the `Unverified Customer` type, however if your use case doesn't require the need for your user to send funds then the `Receive-only Customer` type is recommended.
 
 ```raw
-POST https://api-uat.dwolla.com/customers
+POST https://api-sandbox.dwolla.com/customers
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
@@ -32,7 +32,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747
+Location: https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747
 ```
 ```ruby
 request_body = {
@@ -44,11 +44,11 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = account_token.post "customers", request_body
-customer.headers[:location] # => "https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
+customer.headers[:location] # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-customer # => "https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
+customer # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
 ```
 ```javascript
 var requestBody = {
@@ -61,7 +61,7 @@ var requestBody = {
 accountToken
   .post('customers', requestBody)
   .then(function(res) {
-    res.headers.get('location'); // => 'https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+    res.headers.get('location'); // => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
   });
 ```
 ```python
@@ -74,12 +74,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = account_token.post('customers', request_body)
-customer.headers['location'] # => 'https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 customers_api = dwollaswagger.CustomersApi(client)
 customer = customers_api.create(body = request_body)
-customer # => 'https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+customer # => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 ```
 ```php
 <?php
@@ -92,7 +92,7 @@ $customer = $customersApi->create([
   'ipAddress' => '99.99.99.99'
 ]);
 
-print($customer); # => "https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
+print($customer); # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
 ?>
 ```
 ```java
@@ -107,7 +107,7 @@ myNewCust.setIpAddress("99.99.99.99");
 
 try {
     Unit$ r = cApi.create(myNewCust);
-    System.out.println(r.getLocationHeader()); // => https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747
+    System.out.println(r.getLocationHeader()); // => https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747
 }
 catch (Exception e) {
     System.out.println("Something's up!");
@@ -137,10 +137,10 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+Location: https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
 ```
 ```ruby
-customer_url = 'https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+customer_url = 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 request_body = {
   routingNumber: '222222226',
   accountNumber: '123456789',
@@ -150,14 +150,14 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 funding_source = account_token.post "#{customer_url}/funding-sources", request_body
-funding_source.headers[:location] # => "https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+funding_source.headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 funding_source = DwollaSwagger::FundingsourcesApi.create_customer_funding_source(customer_url, :body => request_body)
-funding_source # => "https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+funding_source # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
 ```
 ```javascript
-var customerUrl = 'https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747';
 var requestBody = {
   'routingNumber': '222222226',
   'accountNumber': '123456789',
@@ -168,11 +168,11 @@ var requestBody = {
 accountToken
   .post(`${customerUrl}/funding-sources`, requestBody)
   .then(function(res) {
-    res.headers.get('location'); // => 'https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+    res.headers.get('location'); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
   });
 ```
 ```python
-customer_url = 'https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+customer_url = 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 request_body = {
   'routingNumber': '222222226',
   'accountNumber': '123456789',
@@ -182,12 +182,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = account_token.post('%s/funding-sources' % customer_url, request_body)
-customer.headers['location'] # => 'https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 funding_api = dwollaswagger.FundingsourcesApi(client)
 funding_source = funding_api.create_customer_funding_source(customer_url, body = request_body)
-funding_source # => 'https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+funding_source # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
 ```php
 <?php
@@ -198,9 +198,9 @@ $new_fs = $fundingApi->createCustomerFundingSource([
   "accountNumber" => "123456789",
   "type" => "checking",
   "name" => "Jane Merchant - Checking 6789"
-], "https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747");
+], "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747");
 
-print($new_fs); # => https://api-uat.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+print($new_fs); # => https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
 ?>
 ```
 

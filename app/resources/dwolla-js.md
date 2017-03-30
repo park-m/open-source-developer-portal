@@ -25,7 +25,7 @@ Begin the client-side implementation by including dwolla.js in the HEAD of your 
 Configuration options are available for utilizing dwolla.js in both our Sandbox and production environments. Configuration of an environment should take place after you have included the dwolla.js library. 
 
 ```javascriptnoselect
-// Sandbox (UAT)
+// Sandbox
 dwolla.configure('sandbox');
 
 // Production

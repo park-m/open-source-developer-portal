@@ -16,7 +16,7 @@ Navigate to the applications page, which contains a list of your created applica
 
 <img src="/images/token-generator-prod.png" alt="Production Token Generator"/>
 
-For Sandbox, visit [https://dashboard-uat.dwolla.com/applications](https://dashboard-uat.dwolla.com/applications).
+For Sandbox, visit [https://dashboard-sandbox.dwolla.com/applications](https://dashboard-sandbox.dwolla.com/applications).
 
 <img src="/images/token-generator.png" alt="Sandbox Token Generator" style="width: 500px;"/>
 

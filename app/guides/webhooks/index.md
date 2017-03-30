@@ -32,16 +32,16 @@ Each webhook sent by the Dwolla API contains an `Event` with `_links` to: the as
   "timestamp": "2015-10-22T14:44:11.407Z",
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/events/80d8ff7d-7e5a-4975-ade8-9e97306d6c15"
+      "href": "https://api-sandbox.dwolla.com/events/80d8ff7d-7e5a-4975-ade8-9e97306d6c15"
     },
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/b4cdac07-eeca-4059-a29c-48900e453d54"
+      "href": "https://api-sandbox.dwolla.com/accounts/b4cdac07-eeca-4059-a29c-48900e453d54"
     },
     "resource": {
-      "href": "https://api-uat.dwolla.com/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
+      "href": "https://api-sandbox.dwolla.com/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
     },
     "customer": {
-      "href": "https://api-uat.dwolla.com/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
+      "href": "https://api-sandbox.dwolla.com/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
     }
   }
 }
