@@ -14,34 +14,34 @@ You can check the status of the newly created transfer by retrieving the transfe
 
 #### Request and response (view schema in 'raw')
 ```raw
-GET https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+GET https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 
 {
   "_links": {
     "cancel": {
-      "href": "https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
+      "href": "https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
       "type": "transfer"
     },
     "source": {
-      "href": "https://api-uat.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1",
+      "href": "https://api-sandbox.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1",
       "type": "account"
     },
     "funding-transfer": {
-      "href": "https://api-uat.dwolla.com/transfers/e73f5b8e-e458-e611-80e5-0aa34a9b2388",
+      "href": "https://api-sandbox.dwolla.com/transfers/e73f5b8e-e458-e611-80e5-0aa34a9b2388",
       "type": "transfer"
     },
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
+      "href": "https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
       "type": "transfer"
     },
     "source-funding-source": {
-      "href": "https://api-uat.dwolla.com/funding-sources/5cfcdc41-10f6-4a45-b11d-7ac89893d985",
+      "href": "https://api-sandbox.dwolla.com/funding-sources/5cfcdc41-10f6-4a45-b11d-7ac89893d985",
       "type": "funding-source"
     },
     "destination": {
-      "href": "https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747",
+      "href": "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747",
       "type": "customer"
     }
   },

@@ -14,7 +14,7 @@ description: "How to verify a customer before sending a bank transfer with Dwoll
 To create a verified personal Customer, use the [create a customer](https://docsv2.dwolla.com/#create-a-customer) endpoint:
 
 ```raw
-POST https://api-uat.dwoola.com/customers
+POST https://api-sandbox.dwolla.com/customers
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -59,7 +59,7 @@ $customer = $customersApi->create([
   'ssn' => '1234'
 ]);
 
-$customer; # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+$customer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ?>
 ```
 ```ruby
@@ -85,11 +85,11 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "customers", request_body
-customer.headers[:location] # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer.headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-customer # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
 ```python
 request_body = {
@@ -111,12 +111,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
-customer.headers['location'] # => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 customers_api = dwollaswagger.CustomersApi(client)
 customer = customers_api.create(body = request_body)
-customer # => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 ```javascript
 var requestBody = {
@@ -138,7 +138,7 @@ var requestBody = {
 
 appToken
   .post('customers', requestBody)
-  .then(res => res.headers.get('location')); // => 'https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 ```
 
 You’ll need to provide the Customer’s full name, email address, home address, date of birth, and the last four digits of their taxpayer identification number (for individuals, this is their Social Security Number).
@@ -152,44 +152,44 @@ The successful creation of a Customer doesn’t necessarily mean the Customer is
 Let’s check to see if the Customer was successfully verified or not. We are going to use the location of the Customer resource that we just created, which is in `new_customer`.
 
 ```raw
-GET https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
+GET https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "customer"
     },
     "receive": {
-      "href": "https://api-uat.dwolla.com/transfers",
+      "href": "https://api-sandbox.dwolla.com/transfers",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "transfer"
     },
     "edit-form": {
-      "href": "https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
       "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
       "resource-type": "customer"
     },
     "edit": {
-      "href": "https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "customer"
     },
     "funding-sources": {
-      "href": "https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F/funding-sources",
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F/funding-sources",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "funding-source"
     },
     "transfers": {
-      "href": "https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F/transfers",
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F/transfers",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "transfer"
     },
     "send": {
-      "href": "https://api-uat.dwolla.com/transfers",
+      "href": "https://api-sandbox.dwolla.com/transfers",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "transfer"
     }
@@ -210,7 +210,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 }
 ```
 ```ruby
-customer_url = 'https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+customer_url = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.get customer_url
@@ -222,7 +222,7 @@ customer.status # => "verified"
 ```
 ```php
 <?php
-$customerUrl = 'https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
 
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
@@ -231,7 +231,7 @@ $customer->status; # => "verified"
 ?>
 ```
 ```python
-customer_url = 'https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+customer_url = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.get(customer_url)
@@ -243,7 +243,7 @@ customer = customers_api.get_customer(customer_url)
 customer.status # => 'verified'
 ```
 ```javascript
-var customerUrl = 'https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
 
 appToken
   .get(customerUrl)

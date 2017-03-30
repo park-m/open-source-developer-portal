@@ -42,8 +42,8 @@ Generate a URL which describes the permissions your application requires (`scope
 Production:
 https://www.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}
 
-UAT(Sandox):
-https://uat.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}
+Sandox:
+https://sandbox.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}
 ```
 
 > Remember to [url-encode](http://en.wikipedia.org/wiki/Percent-encoding) all GET querystring parameters!
@@ -51,7 +51,7 @@ https://uat.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type
 ##### Request parameters
 | Parameter | Required | Type | Description |
 |-----------|----------|----------------|-------------|
-| client_id | yes | string | Application key. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-uat.dwolla.com/applications` (Sandbox) for your application key. |
+| client_id | yes | string | Application key. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-sandbox.dwolla.com/applications` (Sandbox) for your application key. |
 | response_type | yes | string | This must always be set to `code`. |
 | redirect_uri | yes | string | URL where the user will be redirected to afterwards. The value of this parameter must match one of the values that appear in your [application details](https://www.dwolla.com/applications) page. (We compare: protocol, subdomain, domain, tld, and file path. Querystring parameters are ignored) |
 | scope | yes | string | Permissions you are requesting.  See [below](#oauth-scopes) for list of available scopes.  Scopes are delimited by a pipe ("&#124;") |
@@ -61,7 +61,7 @@ https://uat.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type
 
 #### Example request
 ```noselect
-https://uat.dwolla.com/oauth/v2/authenticate?client_id=JCGQXLrlfuOqdUYdTcLz3rBiCZQDRvdWIUPkwssGMuGhkem9Bo&response_type=code&redirect_uri=https%3A%2F%2Fwww.myapplication.com%2Fredirect&scope=send%7Ctransactions&dwolla_landing=login&state=6f102687b52e4f09b5f3a1c2966f2f41
+https://sandbox.dwolla.com/oauth/v2/authenticate?client_id=JCGQXLrlfuOqdUYdTcLz3rBiCZQDRvdWIUPkwssGMuGhkem9Bo&response_type=code&redirect_uri=https%3A%2F%2Fwww.myapplication.com%2Fredirect&scope=send%7Ctransactions&dwolla_landing=login&state=6f102687b52e4f09b5f3a1c2966f2f41
 ```
 
 ### Request user authorization errors
@@ -104,15 +104,15 @@ Including the `Content-Type: application/x-www-form-urlencoded` header, the requ
 ##### Request parameters
 | Parameter | Required | Type | Description |
 |-----------|----------|----------------|-------------|
-| client_id | yes | string | Application key. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-uat.dwolla.com/applications` (Sandbox) for your application key. |
-| client_secret | yes | string | Application secret. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-uat.dwolla.com/applications` (Sandbox) for your application secret. |
+| client_id | yes | string | Application key. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-sandbox.dwolla.com/applications` (Sandbox) for your application key. |
+| client_secret | yes | string | Application secret. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-sandbox.dwolla.com/applications` (Sandbox) for your application secret. |
 | code | yes | string | The authorization code included in the redirect URL. Single use `code` with an expiration of 60 seconds. |
 | grant_type | yes | string | This must be set to `authorization_code`. |
 | redirect_uri | yes | string | The same redirect_uri specified in the initiation step. |
 
 #### Example request
 ```noselect
-POST https://uat.dwolla.com/oauth/v2/token
+POST https://sandbox.dwolla.com/oauth/v2/token
 Content-Type: application/x-www-form-urlencoded
 
 client_id=CGQXLrlfuOqdUYdTcLz3rBiCZQDRvdWIUPkwasGMuGhkem9Bo&client_secret=g7QLwvO37aN2HoKx1amekWi8a2g7AIuPbD5CcJSLqXIcDOxfTr&code=h6TvQZHr5BsVcfO43uOJ0uRkBLki&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fwww.myapplication.com%2Fredirect
@@ -127,7 +127,7 @@ not applicable
 ```python
 import dwollav2
 
-# Navigate to https://www.dwolla.com/applications (production) or https://dashboard-uat.dwolla.com/applications (Sandbox) for your application key and secret.
+# Navigate to https://www.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
 app_key = '...'
 app_secret = '...'
 client = dwollav2.Client(key = app_key,
@@ -171,7 +171,7 @@ auth.callback(req.query) // pass the code and optional state to the callback
 # config/initializers/dwolla.rb
 require 'dwolla_v2'
 
-# Navigate to https://www.dwolla.com/applications (production) or https://dashboard-uat.dwolla.com/applications (Sandbox) for your application key and secret.
+# Navigate to https://www.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
 app_key = "..."
 app_secret = "..."
 $dwolla = DwollaV2::Client.new(key: app_key, secret: app_secret) do |config|
@@ -220,15 +220,15 @@ Including the `Content-Type: application/x-www-form-urlencoded` header, the requ
 ##### Request parameters
 | Parameter | Required | Type | Description |
 |-----------|----------|----------------|-------------|
-| client_id | yes | string | Application key. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-uat.dwolla.com/applications` (Sandbox) for your application key. |
-| client_secret | yes | string | Application secret. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-uat.dwolla.com/applications` (Sandbox) for your application secret. |
+| client_id | yes | string | Application key. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-sandbox.dwolla.com/applications` (Sandbox) for your application key. |
+| client_secret | yes | string | Application secret. Navigate to `https://www.dwolla.com/applications` (production) or `https://dashboard-sandbox.dwolla.com/applications` (Sandbox) for your application secret. |
 | refresh_token | yes | string | A valid refresh token. |
 | grant_type | yes | string | This must be set to `refresh_token`. |
 
 #### Example request
 
 ```raw
-POST https://uat.dwolla.com/oauth/v2/token
+POST https://sandbox.dwolla.com/oauth/v2/token
 Content-Type: application/x-www-form-urlencoded
 
 client_id=CGQXLrlfuOqdUYdTcLz3rBiCZQDRvdWIUPkwasGMuGhkem9Bo&client_secret=g7QLwvO37aN2HoKx1amekWi8a2g7AIuPbD5CcJSLqXIcDOxfTr&grant_type=refresh_token&refresh_token=Pgkel9okjwTCfsvIvEDPrsomE1er1txeyoaAkTIBAuXza8WvZY

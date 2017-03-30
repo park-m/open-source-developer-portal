@@ -23,7 +23,7 @@ Depending on how you interact with test users, you will access the interface spe
 ## Managing test users
 
 #### Access API Console - Manage Access API Customers
-The [Sandbox Dashboard](https://dashboard-uat.dwolla.com) allows you to manage Customers, as well as transfers associated with the Customers that belong to your Sandbox account. Once your application has created its Customers, you can access the [Sandbox Dashboard](https://dashboard-uat.dwolla.com) to validate that the request was recorded properly in our test environment.
+The [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) allows you to manage Customers, as well as transfers associated with the Customers that belong to your Sandbox account. Once your application has created its Customers, you can access the [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) to validate that the request was recorded properly in our test environment.
 
 ![Screenshot of Access API Console](/images/sandbox-console-wl.png "Access API Console")
 
@@ -43,7 +43,7 @@ The Sandbox environment does not replicate any ACH processes, so a `pending` tra
 
 #### Access API Console - Simulate bank transfer processing
 
-A “Process bank transfers” button is available in the [Sandbox Dashboard](https://dashboard-uat.dwolla.com/). This button allows you to simulate bank transfer processing in the Sandbox. Once the button is clicked, Dwolla will process or fail (see below for how-to trigger ACH failures) the last 500 bank transfers that occurred on your Sandbox account or the Access API Customer accounts you manage. Note: If a bank to bank transaction is initiated between two accounts, you’ll want to click “Process bank transfers” twice in order to process both sides of the transaction (debit and credit). Processing for bank transfers will also include initiated micro-deposits. If your application is [subscribed to webhooks](https://docsv2.dwolla.com/#webhook-subscriptions), notifications will be sent, including all transfer or micro-deposit related events, letting your application know that transfers have processed or failed.
+A “Process bank transfers” button is available in the [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com/). This button allows you to simulate bank transfer processing in the Sandbox. Once the button is clicked, Dwolla will process or fail (see below for how-to trigger ACH failures) the last 500 bank transfers that occurred on your Sandbox account or the Access API Customer accounts you manage. Note: If a bank to bank transaction is initiated between two accounts, you’ll want to click “Process bank transfers” twice in order to process both sides of the transaction (debit and credit). Processing for bank transfers will also include initiated micro-deposits. If your application is [subscribed to webhooks](https://docsv2.dwolla.com/#webhook-subscriptions), notifications will be sent, including all transfer or micro-deposit related events, letting your application know that transfers have processed or failed.
 
 ![Screenshot of transfer manipulation](/images/sandbox-dashboard-processing.png "Process bank transfers")
 

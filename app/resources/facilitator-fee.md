@@ -30,7 +30,7 @@ A fee object is made up of a `_links` and an `amount` JSON object. The `_links` 
 {  
    "_links":{  
       "charge-to":{  
-         "href":"https://api-uat.dwolla.com/customers/d795f696-2cac-4662-8f16-95f1db9bddd8"
+         "href":"https://api-sandbox.dwolla.com/customers/d795f696-2cac-4662-8f16-95f1db9bddd8"
       }
    },
    "amount":{  
@@ -43,17 +43,17 @@ A fee object is made up of a `_links` and an `amount` JSON object. The `_links` 
 #### Example transfer request:
 
 ```noselect
-POST https://api-uat.dwolla.com/transfers
+POST https://api-sandbox.dwolla.com/transfers
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {  
    "_links":{  
       "source":{  
-         "href":"http://api-uat.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+         "href":"http://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
       },
       "destination":{  
-         "href":"http://api-uat.dwolla.com/customers/07D59716-EF22-4FE6-98E8-F3190233DFB8"
+         "href":"http://api-sandbox.dwolla.com/customers/07D59716-EF22-4FE6-98E8-F3190233DFB8"
       }
    },
    "amount":{  
@@ -67,7 +67,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
       {  
          "_links":{  
             "charge-to":{  
-               "href":"http://api-uat.dwolla.com/customers/07D59716-EF22-4FE6-98E8-F3190233DFB8"
+               "href":"http://api-sandbox.dwolla.com/customers/07D59716-EF22-4FE6-98E8-F3190233DFB8"
             }
          },
          "amount":{  
@@ -84,7 +84,7 @@ Once a transfer is successfully created, subsequent transfers will be created th
 
 #### Example Get a transfer’s fees request:
 ```noselect
-GET https://api-uat.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388/fees
+GET https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388/fees
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -95,16 +95,16 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
     {
       "_links": {
         "self": {
-          "href": "https://api-uat.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e"
+          "href": "https://api-sandbox.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e"
         },
         "source": {
-          "href": "https://api-uat.dwolla.com/customers/b442c936-1f87-465d-a4e2-a982164b26bd"
+          "href": "https://api-sandbox.dwolla.com/customers/b442c936-1f87-465d-a4e2-a982164b26bd"
         },
         "destination": {
-          "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+          "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
         },
         "created-from-transfer": {
-          "href": "https://api-uat.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
+          "href": "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
         }
       },
       "id": "416a2857-c887-4cca-bd02-8c3f75c4bb0e",
@@ -118,16 +118,16 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
     {
       "_links": {
         "self": {
-          "href": "https://api-uat.dwolla.com/transfers/e58ae1f1-7007-47d3-a308-7e9aa6266d53"
+          "href": "https://api-sandbox.dwolla.com/transfers/e58ae1f1-7007-47d3-a308-7e9aa6266d53"
         },
         "source": {
-          "href": "https://api-uat.dwolla.com/customers/b442c936-1f87-465d-a4e2-a982164b26bd"
+          "href": "https://api-sandbox.dwolla.com/customers/b442c936-1f87-465d-a4e2-a982164b26bd"
         },
         "destination": {
-          "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+          "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
         },
         "created-from-transfer": {
-          "href": "https://api-uat.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
+          "href": "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
         }
       },
       "id": "e58ae1f1-7007-47d3-a308-7e9aa6266d53",
@@ -151,7 +151,7 @@ Since a fee is a separate transfer in itself, it will show up in the transfer li
 Within the Access API, an endpoint does not exist to `refund` a processed transfer from the receiving user or account back to the sending party—this includes fees if any were charged.  Refunds occur by the destination user initiating a separate transfer in reverse from the funding source in which they received the funds. As a facilitator who received funds from the fee, you must determine if the charged user will incur the cost of the fee or be refunded for the original fee amount charged.
 
 ```noselect
-GET https://api-uat.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e
+GET https://api-sandbox.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -160,16 +160,16 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e"
+      "href": "https://api-sandbox.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e"
     },
     "source": {
-      "href": "https://api-uat.dwolla.com/customers/b442c936-1f87-465d-a4e2-a982164b26bd"
+      "href": "https://api-sandbox.dwolla.com/customers/b442c936-1f87-465d-a4e2-a982164b26bd"
     },
     "destination": {
-      "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
     },
     "created-from-transfer": {
-      "href": "https://api-uat.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
+      "href": "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
     }
   },
   "id": "416a2857-c887-4cca-bd02-8c3f75c4bb0e",

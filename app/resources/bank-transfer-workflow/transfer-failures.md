@@ -38,22 +38,22 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388",
+      "href": "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "transfer"
     },
     "source": {
-      "href": "https://api-uat.dwolla.com/funding-sources/71afa37f-17ca-4132-9646-fd3ab83fc8b5",
+      "href": "https://api-sandbox.dwolla.com/funding-sources/71afa37f-17ca-4132-9646-fd3ab83fc8b5",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "funding-source"
     },
     "destination": {
-      "href": "https://api-uat.dwolla.com/customers/99dd22de-6ec6-4ba1-a0d1-09eb169a4bb1",
+      "href": "https://api-sandbox.dwolla.com/customers/99dd22de-6ec6-4ba1-a0d1-09eb169a4bb1",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "customer"
     },
     "failure": {
-      "href": "https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure",
+      "href": "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "failure"
     }
@@ -82,7 +82,7 @@ transfer.status # => "failed"
 transfer = DwollaSwagger::TransfersApi.by_id(transfer_url)
 transfer.status # => "failed"
 
-transfer = DwollaSwagger::TransfersApi.by_id('https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388')
+transfer = DwollaSwagger::TransfersApi.by_id('https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388')
 ```
 ```javascript
 var transferUrl = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
@@ -119,14 +119,14 @@ $transfer->status; # => "failed"
 Dwolla returns a `failure` link within the response that can be used to lookup the ACH return code and corresponding description.
 
 ```raw
-GET https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure
+GET https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure"
+      "href": "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure"
     }
   },
   "code": "R1",
@@ -134,7 +134,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 }
 ```
 ```ruby
-transfer_url = 'https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
@@ -152,7 +152,7 @@ print($failureReason->status); # => "R01"
 ?>
 ```
 ```python
-transfer_url = 'https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
@@ -160,7 +160,7 @@ failure = account_token.get('%s/failure' % transfer_url)
 failure.body['code'] # => 'R1'
 ```
 ```javascript
-var transferUrl = 'https://api-uat.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
+var transferUrl = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
 
 // For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 accountToken

@@ -25,27 +25,27 @@ A resource is a JSON object (e.g. a Transfer object) that contains: properties t
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254",
+      "href": "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254",
       "type": "account"
     },
     "receive": {
-      "href": "https://api-uat.dwolla.com/transfers",
+      "href": "https://api-sandbox.dwolla.com/transfers",
       "type": "transfer"
     },
     "funding-sources": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/funding-sources",
+      "href": "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/funding-sources",
       "type": "funding-source"
     },
     "transfers": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/transfers",
+      "href": "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/transfers",
       "type": "transfer"
     },
     "customers": {
-      "href": "https://api-uat.dwolla.com/customers",
+      "href": "https://api-sandbox.dwolla.com/customers",
       "type": "customer"
     },
     "send": {
-      "href": "https://api-uat.dwolla.com/transfers",
+      "href": "https://api-sandbox.dwolla.com/transfers",
       "type": "transfer"
     }
   },

@@ -42,20 +42,20 @@ curl -X POST
 \ -H "Content-Type: application/vnd.dwolla.v1.hal+json"
 \ -H "Accept: application/vnd.dwolla.v1.hal+json"
 \ -H "Authorization: Bearer qe634nV7dIYpYDf3VGZPciziPU2BCboUZ7G7EG8XEyGswKkBV5"
-\ "https://api-uat.dwolla.com/customers/28138609-30FF-4607-B28C-4A3872F8FD4A/funding-sources-token"
+\ "https://api-sandbox.dwolla.com/customers/28138609-30FF-4607-B28C-4A3872F8FD4A/funding-sources-token"
 
 HTTP/1.1 200 OK
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a/funding-sources-token"
+      "href": "https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a/funding-sources-token"
     }
   },
   "token": "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
 }
 ```
 ```ruby
-customer_url = 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "#{customer_url}/funding-sources-token"
@@ -67,7 +67,7 @@ customer.token # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var customerUrl = 'https://api-uat.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a';
 
 appToken
   .post(`${customerUrl}/funding-sources-token`)
@@ -86,7 +86,7 @@ print token['token'] # => 'Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg'
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
-$fsToken = $customersApi->createFundingSourcesTokenForCustomer("https://api-uat.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a");
+$fsToken = $customersApi->createFundingSourcesTokenForCustomer("https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a");
 $fsToken->token; # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
 ?>
 ```
@@ -125,13 +125,13 @@ You'll then add a form to the body of the page where you want to collect the use
 
 
 ### Step 3: Configure and call JavaScript function to create a new funding source
-Assuming `dwolla.js` is already included and configured on your page, you will create the function that will call `dwolla.fundingSources.create()`. For this example, jQuery is used to call the function that creates a funding source when the user clicks the "Add Bank" button on your page. To test in the sandbox environment, use the `dwolla.configure()` helper function and pass in the value of `uat`. 
+Assuming `dwolla.js` is already included and configured on your page, you will create the function that will call `dwolla.fundingSources.create()`. For this example, jQuery is used to call the function that creates a funding source when the user clicks the "Add Bank" button on your page. To test in the sandbox environment, use the `dwolla.configure()` helper function and pass in the value of `sandbox`. 
 
 In our example, `dwolla.fundingSources.create()` takes three arguments: a string value of the funding sources token, JavaScript object containing bank account information entered by the user, and a callback function that will handle any error or response. 
 
 ```javascriptnoselect
 $('form').on('submit', function() {
-  dwolla.configure('uat');
+  dwolla.configure('sandbox');
   var token = 'Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg';
   var bankInfo = {
     routingNumber: $('routingNumber').val(),
@@ -161,7 +161,7 @@ The callback function (err, res) allows you to determine if there is an error wi
 * If there is an error: Display the error to the user to have them correct any fields, and have them re-attempt to add their bank.
   * Example: `{"error":{"code":"ValidationError","message":"Validation error(s) present. See embedded errors list for more details.","_embedded":{"errors":[{"code":"Invalid","message":"Routing number invalid.","path":"/routingNumber"}]}}}`
 * If successful: You will receive a JSON response that includes a link to the newly attached funding source. 
-  * Example:  `{"error":null,"response":{"_links":{"funding-source":{"href":"https://api-uat.dwolla.com/funding-sources/746d5c93-acb9-4826-a9c1-78ecf16401a6"}}}}`
+  * Example:  `{"error":null,"response":{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/746d5c93-acb9-4826-a9c1-78ecf16401a6"}}}}`
 
 * * *
 

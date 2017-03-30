@@ -16,7 +16,7 @@ The Sandbox environment does not replicate any bank transfer processes, so a pen
 
 ![Screenshot of process bank transfers button](/images/process-bank-transfers.png "Process bank transfers button")
 
-A “Process bank transfers” button is available in the [Dwolla Dashboard](https://dashboard-uat.dwolla.com). This button allows you to simulate bank transfer processing in the Sandbox. Once the button is clicked, Dwolla will process or fail (see below for how-to trigger ACH failures) the last 500 bank transfers that occurred on your Sandbox account or the Access API Customer accounts you manage. **Note:** If a bank to bank transaction is initiated between two accounts, you'll want to click "Process bank transfers" twice in order to process both sides of the transaction (debit and credit). Processing for bank transfers will also include initiated micro-deposits. If your application is [subscribed to webhooks](https://docsv2.dwolla.com/#webhook-subscriptions), notifications will be sent, including all transfer or micro-deposit related events, letting your application know that transfers have processed or failed.
+A “Process bank transfers” button is available in the [Dwolla Dashboard](https://dashboard-sandbox.dwolla.com). This button allows you to simulate bank transfer processing in the Sandbox. Once the button is clicked, Dwolla will process or fail (see below for how-to trigger ACH failures) the last 500 bank transfers that occurred on your Sandbox account or the Access API Customer accounts you manage. **Note:** If a bank to bank transaction is initiated between two accounts, you'll want to click "Process bank transfers" twice in order to process both sides of the transaction (debit and credit). Processing for bank transfers will also include initiated micro-deposits. If your application is [subscribed to webhooks](https://docsv2.dwolla.com/#webhook-subscriptions), notifications will be sent, including all transfer or micro-deposit related events, letting your application know that transfers have processed or failed.
 
 ### Trigger ACH failures
 Transfers to or from a bank account can fail for a number of reasons (e.g. insufficient funds, invalid account number, etc. ). When a bank transfer fails, the associated financial institution that rejected the transaction assigns an ACH return code and a transfer failure event is then triggered in Dwolla. Dwolla allows you to trigger various bank transfer failures by specifying an “R” code in the funding source `name` parameter when creating or [updating a funding source](https://docsv2.dwolla.com/#update-a-funding-source) for a Dwolla Account or Access API Customer. When a [transfer is initiated](https://docsv2.dwolla.com/#initiate-a-transfer) using a funding source that has an “R” code assigned to its name, a transfer failure event will trigger and the status will update to failed when you click the “Process bank transfers” button (as mentioned above). 
@@ -130,7 +130,7 @@ $customer = $customersApi->create([
   'ssn' => '1234'
 ]);
 
-$customer; # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+$customer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ?>
 ```
 ```ruby
@@ -156,11 +156,11 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "customers", request_body
-customer.headers[:location] # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer.headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-customer # => "https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
 ```python
 request_body = {
@@ -182,12 +182,12 @@ request_body = {
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
-customer.headers['location'] # => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 customers_api = dwollaswagger.CustomersApi(client)
 customer = customers_api.create(body = request_body)
-customer # => 'https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 ```javascript
 var requestBody = {
@@ -209,6 +209,6 @@ var requestBody = {
 
 appToken
   .post('customers', requestBody)
-  .then(res => res.headers.get('location')); // => 'https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 ```
 

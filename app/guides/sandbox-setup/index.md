@@ -19,11 +19,11 @@ The Sandbox environment is a complete replica of the Dwolla production environme
 
 - The Sandbox contains only test data and is completely separate from your production account
 - Actual money is not sent or received as part of test transactions. Real financial data should never be used in the Sandbox
-- All Access API endpoints have a base URL of `https://api-uat.dwolla.com/` instead of `https://api.dwolla.com/`
+- All Access API endpoints have a base URL of `https://api-sandbox.dwolla.com/` instead of `https://api.dwolla.com/`
 
 ## Sandbox setup
 
-During Sandbox account creation, Dwolla will associate a funding source, add $1000 to the account balance, and create an application. Once your account is created, you'll be redirected to our Sandbox Dashboard at `https://dashboard-uat.dwolla.com/` where you can view your API key and secret and [generate an OAuth access token](/resources/token-generator.html).
+During Sandbox account creation, Dwolla will associate a funding source, add $1000 to the account balance, and create an application. Once your account is created, you'll be redirected to our Sandbox Dashboard at `https://dashboard-sandbox.dwolla.com/` where you can view your API key and secret and [generate an OAuth access token](/resources/token-generator.html).
 
 <a href="https://uat.dwolla.com/oauth/v2/authenticate?client_id=xxXlsnHdGTnA2U5evWXB9cDnxMHeGbIuNxdGX7aKLON4uVciPe&response_type=code&redirect_uri=https%3A%2F%2Fdashboard-uat.dwolla.com%2Fcallback&scope=send%7Cbalance%7Caccountinfofull%7Ccontacts%7Cfunding%7Crequest%7Ctransactions%7Cscheduled%7Cmanagecustomers%7Cmanageapplications&verified_account=true&dwolla_landing=register&state=DwollaSandboxDashboard" target="_blank" class="btn secondary large">Create your Sandbox account</a>
 

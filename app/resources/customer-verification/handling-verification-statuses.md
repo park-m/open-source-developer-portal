@@ -160,10 +160,10 @@ curl -X POST
 \ -H "Content-Type: multipart/form-data" 
 \ -F "documentType=passport" 
 \ -F "file=@foo.png" 
-\ 'https://api-uat.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1/documents'
+\ 'https://api-sandbox.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1/documents'
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 ```
 ```ruby
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
@@ -206,7 +206,7 @@ If the document was successfully uploaded, the response will be a HTTP 201|Creat
 
 ```noselect
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 ```
 
 You’ll also get a webhook with a `customer_verification_document_uploaded` event to let you know the document was successfully uploaded.
@@ -230,7 +230,7 @@ If you receive a `customer_verification_document_failed` webhook, you’ll need 
 #### Request and response:
 
 ```raw
-GET https://api-uat.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+GET https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR
 
@@ -239,7 +239,7 @@ Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
+      "href": "https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
     }
   },
   "id": "11fe0bab-39bd-42ee-bb39-275afcc050d0",
