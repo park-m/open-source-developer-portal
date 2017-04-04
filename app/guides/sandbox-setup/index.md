@@ -25,7 +25,7 @@ The Sandbox environment is a complete replica of the Dwolla production environme
 
 During Sandbox account creation, Dwolla will associate a funding source, add $1000 to the account balance, and create an application. Once your account is created, you'll be redirected to our Sandbox Dashboard at `https://dashboard-sandbox.dwolla.com/` where you can view your API key and secret and [generate an OAuth access token](/resources/token-generator.html).
 
-<a href="https://uat.dwolla.com/oauth/v2/authenticate?client_id=xxXlsnHdGTnA2U5evWXB9cDnxMHeGbIuNxdGX7aKLON4uVciPe&response_type=code&redirect_uri=https%3A%2F%2Fdashboard-uat.dwolla.com%2Fcallback&scope=send%7Cbalance%7Caccountinfofull%7Ccontacts%7Cfunding%7Crequest%7Ctransactions%7Cscheduled%7Cmanagecustomers%7Cmanageapplications&verified_account=true&dwolla_landing=register&state=DwollaSandboxDashboard" target="_blank" class="btn secondary large">Create your Sandbox account</a>
+<a href="https://sandbox.dwolla.com/oauth/v2/authenticate?client_id=xxXlsnHdGTnA2U5evWXB9cDnxMHeGbIuNxdGX7aKLON4uVciPe&response_type=code&redirect_uri=https%3A%2F%2Fdashboard-sandbox.dwolla.com%2Fcallback&scope=send%7Cbalance%7Caccountinfofull%7Ccontacts%7Cfunding%7Crequest%7Ctransactions%7Cscheduled%7Cmanagecustomers%7Cmanageapplications&verified_account=true&dwolla_landing=register&state=DwollaSandboxDashboard" target="_blank" class="btn secondary large">Create your Sandbox account</a>
 
 You’re ready to start sending money in the Sandbox! To simplify development, learn about configuring and using our [SDKs](/pages/sdks.html). You can jump straight into the [API docs](https://docsv2.dwolla.com/) or continue to the next guide below.
 
