@@ -8,7 +8,7 @@ description: "Set up bank transfers with Dwolla's ACH API in our developer sandb
 
 # What is a Sandbox Console?
 
-Whether you intend to create traditional Dwolla accounts, view and manage programmatically created Access API Customers, or manipulate the status of transfers initiated by your application, Dwolla provides an interface that helps simplify your development experience.
+Whether you intend to create Transfer accounts, view and manage programmatically created Access API Customers, or manipulate the status of transfers initiated by your application, Dwolla provides an interface that helps simplify your development experience.
 
 There are two Sandbox admin consoles designed to support the specific needs of a developer’s application. The key distinction between each console—Access API vs. Transfer—is the type of test user associated with your application. 
 
@@ -16,7 +16,7 @@ There are two Sandbox admin consoles designed to support the specific needs of a
 <a href="https://sandbox-uat.dwolla.com" target="_blank" class="btn secondary large">Access the Sandbox Console</a>
 
 ### Access API Console vs. Transfer Console
-Depending on how you interact with test users, you will access the interface specific to your integration type, either the Access API Console (using Sandbox Dashboard) or Transfer Console. As a developer, determine if you intend to manage the entire end-user experience (Access API) or if you want to leverage the Dwolla co-branded user experience and associated Dwolla account (Transfer). Read our [Account Types guide](https://developers.dwolla.com/resources/account-types.html) for more information on the differences between Access API Customers and traditional Dwolla accounts (Transfer accounts). **Note:** The Access API is a premium solution and you will need to work directly with Sales prior to activating in production. For more information about the Access API, please [contact sales](https://www.dwolla.com/contact).
+Depending on how you interact with test users, you will access the interface specific to your integration type, either the Access API Console (using Sandbox Dashboard) or Transfer Console. As a developer, determine if you intend to manage the entire end-user experience (Access API) or if you want to leverage the Dwolla co-branded user experience and associated Dwolla account (Transfer). Read our [Account Types guide](https://developers.dwolla.com/resources/account-types.html) for more information on the differences between Access API Customers and Transfer accounts. **Note:** The Access API is a premium solution and you will need to work directly with Sales prior to activating in production. For more information about the Access API, please [contact sales](https://www.dwolla.com/contact).
 
 ![Screenshot of sandbox home](/images/sandbox-console-home.png "Sandbox Console home screen")
 
@@ -27,8 +27,8 @@ The [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) allows you to mana
 
 ![Screenshot of Access API Console](/images/sandbox-console-wl.png "Access API Console")
 
-#### Transfer Console - Manage traditional Dwolla accounts
-Unlike the Access API, you are unable to create accounts from your application. Traditional accounts should be created via Dwolla’s [OAuth account creation](https://developers.dwolla.com/guides/auth/oauth-account-creation.html) experience. However, to simplify the testing process, the Transfer Console allows you to create test Dwolla accounts and associate funding sources. Once the test accounts have been created, your application can facilitate a transfer of funds to, from, or between test accounts once authorization is obtained via [OAuth](https://developers.dwolla.com/guides/auth/authorization-code-flow.html). 
+#### Transfer Console - Manage Transfer accounts
+Unlike the Access API, you are unable to create accounts from your application. Transfer accounts should be created via Dwolla’s [OAuth account creation](https://developers.dwolla.com/guides/auth/oauth-account-creation.html) experience. However, to simplify the testing process, the Transfer Console allows you to create test Dwolla accounts and associate funding sources. Once the test accounts have been created, your application can facilitate a transfer of funds to, from, or between test accounts once authorization is obtained via [OAuth](https://developers.dwolla.com/guides/auth/authorization-code-flow.html). 
 
 ![Screenshot of Transfer Console](/images/sandbox-console-standard.png "Transfer Console")
 

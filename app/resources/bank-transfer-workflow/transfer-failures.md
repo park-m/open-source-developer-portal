@@ -21,7 +21,7 @@ There are several reasons bank transfers can fail, a few of which are outlined b
 
 Bank accounts will automatically be removed from the Dwolla system for all ACH return codes except an `R01`. If subscribed to webhooks, your application will receieve a webhook with the `funding_source_removed` event along with the `transfer_failed` event.
 
-When a bank transfer fails from a verified account (e.g. [Traditional CIP Verified](/resources/account-types/traditional-accounts.html) or [Access API Verified Customer](/resources/account-types/access-api-accounts.html) to a recipient), funds will return to the sending account’s Dwolla balance. For other transfer scenarios, funds will return to the source bank account. 
+When a bank transfer fails from a verified account (e.g. [Transfer CIP Verified](/resources/account-types/transfer-accounts.html) or [Access API Verified Customer](/resources/account-types/access-api-accounts.html) to a recipient), funds will return to the sending account’s Dwolla balance. For other transfer scenarios, funds will return to the source bank account. 
 
 ### Retrieving the reason for a failed bank transfer
 

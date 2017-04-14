@@ -11,11 +11,11 @@ description: "Getting started with Dwolla's bank transfer API."
 
 ## Access API Customer accounts
 
-An Access API Customer account is created programmatically by a Partner’s Traditional CIP Verified account via the endpoint “Create New Customer”. All required account information will be handled through the API and the Customer will interact directly with the Traditional CIP Verified account to manage their account.
+An Access API Customer account is created programmatically by a Partner’s CIP Verified Dwolla account via the endpoint “Create New Customer”. All required account information will be handled through the API and the Customer will interact directly with the Partner Dwolla account account to manage their account.
 
 ##### Verified Customer
 
-This third-party-created account requires the same user profile data as a Traditional CIP Verified account. A Verified Customer account is required when the Partner’s end user needs to hold a Dwolla balance or transact with an Unverified Customer account type. Types of Verified Customers include: Personal or Business. 
+This third-party-created account requires the same user profile data as a Transfer CIP Verified account. A Verified Customer account is required when the Partner’s end user needs to hold a Dwolla balance or transact with an Unverified Customer account type. Types of Verified Customers include: Personal or Business. 
 
 ##### Unverified Customer
 

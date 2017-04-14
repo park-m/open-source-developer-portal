@@ -19,7 +19,7 @@ There are three ways to onboard new users, each with varying levels of required 
 * Create a Dwolla Direct account with instant bank account verification (IAV)
 * Create a Full Dwolla account with both identity and bank verification
 
-Dwolla Direct accounts were designed to provide a lightweight registration experience. In contrast to full Dwolla accounts, full identity verification is not required for Dwolla Direct accounts. Because of this, they have certain restrictions within the Dwolla platform, e.g. Dwolla Direct accounts cannot hold a Dwolla balance. Read more on the difference between Direct and full Dwolla accounts in our [account types](/resources/account-types/traditional-accounts.html) resource article.
+Dwolla Direct accounts were designed to provide a lightweight registration experience. In contrast to full Dwolla accounts, full identity verification is not required for Dwolla Direct accounts. Because of this, they have certain restrictions within the Dwolla platform, e.g. Dwolla Direct accounts cannot hold a Dwolla balance. Read more on the difference between Direct and full Dwolla accounts in our [account types](/resources/account-types/transfer-accounts.html) resource article.
 
 ## User experience - Dwolla Direct account
 

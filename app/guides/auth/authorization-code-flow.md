@@ -34,7 +34,7 @@ Requested scopes must also be enabled on your application settings, otherwise Dw
 * * *
 
 ## Step 1: Request user authorization
-Generate a URL which describes the permissions your application requires (`scope`), who the client application is (`client_id`), and where the user should be redirected to after they grant or deny permissions to your application (`redirect_uri`). Optionally, specify if you want the user to create a [full Dwolla account](/resources/account-types/traditional-accounts.html) using the `verified_account` querystring parameter, and whether you want to initially present either the create an account or login screen using the `dwolla_landing` parameter.
+Generate a URL which describes the permissions your application requires (`scope`), who the client application is (`client_id`), and where the user should be redirected to after they grant or deny permissions to your application (`redirect_uri`). Optionally, specify if you want the user to create a [full Dwolla account](/resources/account-types/transfer-accounts.html) using the `verified_account` querystring parameter, and whether you want to initially present either the create an account or login screen using the `dwolla_landing` parameter.
 
 #### Request format
 

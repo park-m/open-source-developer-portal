@@ -31,7 +31,7 @@ The timetables for transfers in and out of the Dwolla network are:
 | Next Day ACH  | 1-2 business days |
 | Standard ACH  | 3-5 business days |
 
-* Transfers into the Dwolla network from a bank, including transfers that pass through the Dwolla network to another user’s bank account, can be cancelled by a [Traditional CIP Verified account](/resources/account-types.html) or [Access API Customer account](/resources/account-types/access-api-accounts.html) at any point until 4pm CT on that same business day if initiated prior to 4PM CT. If a transfer was initiated after 4pm CT, it can be cancelled anytime before 4pm CT on the following business day.
+* Transfers into the Dwolla network from a bank, including transfers that pass through the Dwolla network to another user’s bank account, can be cancelled by a [Transfer CIP Verified account](/resources/account-types.html) or [Access API Customer account](/resources/account-types/access-api-accounts.html) at any point until 4pm CT on that same business day if initiated prior to 4PM CT. If a transfer was initiated after 4pm CT, it can be cancelled anytime before 4pm CT on the following business day.
 
 #### Dwolla network to bank
 

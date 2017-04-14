@@ -26,7 +26,7 @@ The [Off-Site Gateway API](https://docs.dwolla.com/#checkouts) is a way to seaml
 
 Unlike the Pay Later flow, the checkout process is completed when the user clicks "Submit Payment" on the gateway and the payment is sent immediately to the merchant. The pay now flow does not require any action from the user after they are returned from the gateway to the merchant site.
 
-1. User is prompted to create a [Dwolla Direct account](https://developers.dwolla.com/resources/account-types/traditional-accounts.html) (If `allowGuestCheckout` and `AllowFundingSources` were enabled in the request), or they will log in using existing account.
+1. User is prompted to create a [Dwolla Direct account](https://developers.dwolla.com/resources/account-types/transfer-accounts.html) (If `allowGuestCheckout` and `AllowFundingSources` were enabled in the request), or they will log in using existing account.
 ![Screenshot of gateway Direct account creation](/images/gateway/createDirect.png "Dwolla Direct account creation")
   * If the user is already has a Dwolla account, they will be prompted to log in providing their email and password. Once the user successfully authenticates, they will be presented with the purchase order provided during the request.
 ![Screenshot of gateway login](/images/gateway/login.png "Off-site gateway login")
