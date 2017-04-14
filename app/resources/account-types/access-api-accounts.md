@@ -20,3 +20,7 @@ This third-party-created account requires the same user profile data as a Tradit
 ##### Unverified Customer
 
 An Unverified Customer is a third-party-created account that requires a minimal amount of account data: first name, last name, email address, and IP address. **Note:** Unverified Customer accounts have a default sending transaction limit of $5000 per week. A week is defined as Monday to Sunday.
+
+##### Receive-only Customer
+
+Receive-only Customers are restricted to a “payouts only” business model within the Access API. A receive-only customer maintains limited functionality in the API and is only eligible to receive transfers to an attached bank account from the Dwolla Account that created it.

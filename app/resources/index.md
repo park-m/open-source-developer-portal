@@ -52,4 +52,8 @@ description: "Getting started with Dwolla's bank transfer API."
         <h3><a href="/resources/same-day-ach.html">Same Day ACH</a></h3>
         <p>A walkthrough of Same Day ACH and leveraging <code>next-available</code> processing times for faster transfers.</p>
     </li>
+    <li>
+        <h3><a href="/resources/wire-transfer-api.html">Wire transfer API</a></h3>
+        <p>A walkthrough of sending wire transfers through the Dwolla API.</p>
+    </li>
 </ul>
