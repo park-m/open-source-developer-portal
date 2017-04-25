@@ -91,6 +91,9 @@
     <loc>https://developers.dwolla.com/resources/dwolla-js.html</loc>
   </url>
   <url>
+    <loc>https://developers.dwolla.com/resources/dwolla-plaid-integration.html</loc>
+  </url>
+  <url>
     <loc>https://developers.dwolla.com/resources/facilitator-fee.html</loc>
   </url>
   <url>
@@ -106,7 +109,16 @@
     <loc>https://developers.dwolla.com/</loc>
   </url>
   <url>
-    <loc>https://developers.dwolla.com/guides/webhooks/</loc>
+    <loc>https://developers.dwolla.com/guides/migrate-to-v2/</loc>
+  </url>
+  <url>
+    <loc>https://developers.dwolla.com/guides/</loc>
+  </url>
+  <url>
+    <loc>https://developers.dwolla.com/guides/auth/</loc>
+  </url>
+  <url>
+    <loc>https://developers.dwolla.com/guides/offsite-gateway/</loc>
   </url>
   <url>
     <loc>https://developers.dwolla.com/resources/</loc>
@@ -115,25 +127,16 @@
     <loc>https://developers.dwolla.com/guides/transfer-money-between-users/</loc>
   </url>
   <url>
-    <loc>https://developers.dwolla.com/guides/auth/</loc>
-  </url>
-  <url>
-    <loc>https://developers.dwolla.com/guides/send-money/</loc>
+    <loc>https://developers.dwolla.com/guides/webhooks/</loc>
   </url>
   <url>
     <loc>https://developers.dwolla.com/guides/sandbox-setup/</loc>
   </url>
   <url>
+    <loc>https://developers.dwolla.com/guides/send-money/</loc>
+  </url>
+  <url>
     <loc>https://developers.dwolla.com/guides/receive-money/</loc>
-  </url>
-  <url>
-    <loc>https://developers.dwolla.com/guides/offsite-gateway/</loc>
-  </url>
-  <url>
-    <loc>https://developers.dwolla.com/guides/</loc>
-  </url>
-  <url>
-    <loc>https://developers.dwolla.com/guides/migrate-to-v2/</loc>
   </url>
   <url>
     <loc>https://developers.dwolla.com/resources/funding-source-verification/instant-account-verification.html</loc>
@@ -202,10 +205,10 @@
     <loc>https://developers.dwolla.com/resources/bank-transfer-workflow/transfer-failures.html</loc>
   </url>
   <url>
-    <loc>https://developers.dwolla.com/guides/send-money/transfer-onboarding.html</loc>
+    <loc>https://developers.dwolla.com/guides/receive-money/transfer-onboarding.html</loc>
   </url>
   <url>
-    <loc>https://developers.dwolla.com/guides/receive-money/transfer-onboarding.html</loc>
+    <loc>https://developers.dwolla.com/guides/send-money/transfer-onboarding.html</loc>
   </url>
   <url>
     <loc>https://developers.dwolla.com/guides/auth/using-an-access-token.html</loc>
