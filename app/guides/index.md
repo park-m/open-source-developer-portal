@@ -14,7 +14,7 @@ description: "Programmatically send bank transfers with our developer API."
         <p>Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.</p>
     </a>
     <a href="/guides/receive-money" class="icon-guides-receive-small grid-nav__item">
-        <h3>Recieve money from your users</h3>
+        <h3>Receive money from your users</h3>
         <p>Accept ACH transfers. Covers both Access API and Transfer integrations.</p>
     </a>
     <a href="/guides/transfer-money-between-users" class="icon-guides-transfer-small grid-nav__item">
