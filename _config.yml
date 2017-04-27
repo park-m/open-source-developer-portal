@@ -31,3 +31,6 @@ highlighter: rouge
 url: https://developers.dwolla.com
 gems:
   - jekyll-sitemap
+
+gems:
+  - jekyll-redirect-from

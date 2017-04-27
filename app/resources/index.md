@@ -6,7 +6,7 @@ description: "Getting started with Dwolla's bank transfer API."
 
 <h1>Tools</h1>
 <ul class="icon-links">
-    <li><a href="/resources/sandbox-console.html" class="icon-tools-sandbox">Sandbox Console</a></li>
+    <li><a href="https://dashboard-sandbox.dwolla.com" target="_blank" class="icon-tools-sandbox">Sandbox Dashboard</a></li>
     <li><a href="/resources/token-generator.html" class="icon-tools-token-generator js-track-link">Token generator</a></li>
     <li><a href="/resources/changelog.html" class="icon-tools-change-log">Change log</a></li>
     <li><a href="http://status.dwolla.com" target="_blank" class="icon-tools-status">Status</a></li>
@@ -30,7 +30,7 @@ description: "Getting started with Dwolla's bank transfer API."
         <p>Best practices and recommendations for managing your tokens.</p>
     </li>
     <li>
-        <h3><a href="/resources/testing.html">Testing</a></h3>
+        <h3><a href="/resources/testing.html">Testing in the Sandbox</a></h3>
         <p>Simulate various test cases with the use of sentinel values or actionable buttons in Dwolla’s Sandbox environment.</p>
     </li>
 </ul>
