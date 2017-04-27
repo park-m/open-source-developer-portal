@@ -2,11 +2,11 @@
 layout: twoColumn
 section: resources
 type: article
-title:  Facilitator Fee
+title:  "Facilitator fee"
 description: "As a platform, earn revenue by collecting a portion of the transfer amount on payments facilitated between two users."
 ---
 
-# Facilitator Fee
+# Facilitator fee
 
 The facilitator fee is a feature allowing for a flat rate amount to be removed from a payment as a fee, and sent to the creator of the Dwolla application. The fee does not affect the original payment amount, and exists as a separate Transfer resource with a unique transfer ID.
 

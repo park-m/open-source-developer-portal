@@ -8,17 +8,17 @@ description: "Keep track of changes to the Dwolla API and official SDKs."
 
 <section class="change-log">
 	<h1>Upcoming</h1>
-	<h3>2017-04-27</h3>
-	<h4><em>DEPRECATED</em></h4>
-	<ul class="bullet">
-	    <li>Removal of the Sandbox Console tool which exists at: <code>https://sandbox-uat.dwolla.com/</code></li>
-	</ul>
 	<h3>2017-06-29</h3>
 	<h4><em>CHANGED/DEPRECATED</em></h4>
 	<ul class="bullet">
 	    <li>Changing "uat” in the subdomain of public facing and API URLs with “sandbox”. Reference <a href="https://www.dwolla.com/updates/important-sandbox-updates-subdomain-change-and-sunsetting-of-the-sandbox-console/">this blog post</a> for more information. </li>
 	</ul>
 	<h1>Completed</h1>
+	<h3>2017-04-27</h3>
+	<h4><em>DEPRECATED</em></h4>
+	<ul class="bullet">
+	    <li>Removal of the Sandbox Console tool which exists at: <code>https://sandbox-uat.dwolla.com/</code></li>
+	</ul>
 	<h3>2016-12-01</h3>
 	<h4><em>ADDED</em></h4>
 	<ul class="bullet">

@@ -2,11 +2,11 @@
 layout: twoColumn
 section: resources
 type: article
-title:  "Testing"
+title:  "Testing in the Sandbox"
 description: "In the Dwolla Sandbox environment, simulate various test cases using sentinel values or actionable buttons."
 ---
 
-# Testing
+# Testing in the Sandbox
 
 ## Overview
 The Sandbox environment allows you to test the Dwolla Access API without any real-world impact, meaning that no real personal identifying information or financial data is used and bank transfer processing does not run as it would in production. Since dummy data is utilized in the Sandbox environment, Dwolla provides a way to simulate various test cases by providing either sentinel values that can be used when making API requests or buttons that trigger certain actions (e.g. simulate bank transfer processing).
