@@ -14,6 +14,11 @@ description: "Keep track of changes to the Dwolla API and official SDKs."
 	    <li>Changing "uat” in the subdomain of public facing and API URLs with “sandbox”. Reference <a href="https://www.dwolla.com/updates/important-sandbox-updates-subdomain-change-and-sunsetting-of-the-sandbox-console/">this blog post</a> for more information. </li>
 	</ul>
 	<h1>Completed</h1>
+	<h3>2016-05-02</h3>
+	<h4><em>ADDED</em></h4>
+	<ul class="bullet">
+	    <li>Release support for a new (optional) <code>backButton</code> and <code>subscriber</code> options for IAV within <a href="https://developers.dwolla.com/resources/dwolla-js/instant-account-verification.html">dwolla.js</a>. <b>Note:</b> Dwolla.js is a premium feature only available for Dwolla <a href="https://www.dwolla.com/access-api">Access API</a> partners.</li>
+	</ul>
 	<h3>2017-04-27</h3>
 	<h4><em>DEPRECATED</em></h4>
 	<ul class="bullet">
@@ -22,7 +27,7 @@ description: "Keep track of changes to the Dwolla API and official SDKs."
 	<h3>2016-12-01</h3>
 	<h4><em>ADDED</em></h4>
 	<ul class="bullet">
-	    <li>Release support for a new <code>clearing</code> request parameter when <a href="https://docsv2.dwolla.com/#initiate-a-transfer">initiating a transfer</a>. Clearing is a JSON object that supports specifying same-day and standard ACH clearing per API request. <b>Note:</b> The clearing request parameter is a premium feature available for Dwolla <a href="https://www.dwolla.com/white-label">Access API</a> partners.</li>
+	    <li>Release support for a new <code>clearing</code> request parameter when <a href="https://docsv2.dwolla.com/#initiate-a-transfer">initiating a transfer</a>. Clearing is a JSON object that supports specifying same-day and standard ACH clearing per API request. <b>Note:</b> The clearing request parameter is a premium feature available for Dwolla <a href="https://www.dwolla.com/access-api">Access API</a> partners.</li>
 	</ul>
 	<h3>2016-12-01</h3>
 	<h4><em>DEPRECATED</em></h4>

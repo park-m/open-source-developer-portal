@@ -10,14 +10,20 @@ description: "Quickly integrate instant bank verification for developers using t
 # Dwolla.js
 
 ## Using Dwolla.js for Instant Account Verification (IAV)
-For Access API partners, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their Customer's bank or credit union account. By calling a separate function `dwolla.iav.start()`, the Access API partner application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as: `stylesheets` which represents a list of CSS stylesheets for styling the IAV flow, `microDeposits` which presents the micro-deposit method of bank verification as an option throughout the IAV flow, and `fallbackToMicroDeposits` which gives the user the option fallback to selecting the micro-deposit method of bank verification within the IAV flow.
+For Access API partners, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their customer's bank or credit union account. By calling a separate function `dwolla.iav.start()`, the Access API partner application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as: 
+
+* `stylesheets` - a list of CSS stylesheets for styling the IAV flow 
+* `microDeposits` - presents a selection screen for the user to choose the micro-deposit method of bank verification throughout the IAV flow
+* `fallbackToMicroDeposits` - presents a selection screen for the user to fallback to selecting the micro-deposit method of bank verification within the IAV flow
+* `backButton` - displays a back button throughout the IAV flow
+* `subscriber` - a function that can be used by an application to subscribe to state changes throughout the IAV flow
 
 ### dwolla.iav.start()
 
-Param | Type | Value
+Parameter | Type | Value
 ----------|-------------|--------------
 iav-token | string | A single use IAV token [generated on your server](https://docsv2.dwolla.com/#generate-an-iav-token).
-options | object | An object containing configurable options. Contains keys: `container`, `stylesheets`, `microDeposits` and `fallbackToMicroDeposits`. See example below. <br> `container` represents a string value container element where IAV will render. <br> `stylesheets` represents an array list of stylesheets to load IAV styles. <br> `microDeposits` represents a *true* or *false* value which determines if the micro-deposit method of bank verification is presented as an option throughout the IAV flow. <br> `fallbackToMicroDeposits` represents a boolean *true* or *false* value which determines if a fallback selection screen appears for choosing an alternative bank verification method.
+options | object | An object containing configurable options. Contains keys: `container`, `stylesheets`, `microDeposits`, `fallbackToMicroDeposits`, `backButton`, and `subscriber`. *See example below*. <br> `container` represents a string value container element where IAV will render. <br> `stylesheets` represents an array list of stylesheets to load IAV styles. <br> `microDeposits` represents a boolean *true* or *false* value which determines if the micro-deposit method of bank verification is presented as an option throughout the IAV flow. <br> `fallbackToMicroDeposits` represents a boolean *true* or *false* value which determines if a fallback selection screen appears for choosing an alternative bank verification method. <br> `backButton` represents a boolean *true* or *false* value which determines if a back button is displayed throughout the IAV flow. <br> `subscriber` is a function that can be used to subscribe to state changes throughout the IAV flow. This function will be called with an object containing a `currentPage` and an optional `error` attribute.
 callback | function | A callback function that handles the response from Dwolla.
 
 #### Example
@@ -26,11 +32,15 @@ callback | function | A callback function that handles the response from Dwolla.
 dwolla.iav.start('8zN400zyPUobbdmeNfhTGH2Jh5JkFREJa9YBI8SLXp0ERXNTMT', {
   container: 'iavContainer',
   stylesheets: [
-    'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext',
-    'http://myapp.com/iav/customStylesheet.css'
+    'https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext',
+    'https://myapp.com/iav/customStylesheet.css'
   ],
   microDeposits: false,
-  fallbackToMicroDeposits: true
+  fallbackToMicroDeposits: true,
+  backButton: true,
+  subscriber: ({ currentPage, error }) => {
+      console.log('currentPage:', currentPage, 'error:', JSON.stringify(error))
+    }
 }, function(err, res) {
   console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
 });
@@ -75,86 +85,64 @@ To help you test error scenarios, a flag and an option can be used in the first 
 ![Screenshot of IAV user facing error message](/images/IAVErrorMessage.png "IAV user facing error")
 
 
-## Customization
-#### Enabling micro-deposits or fallback to micro-deposits
+## Options and customization
+#### `microDeposits`
 Your application can present the micro-deposit method of bank verification throughout the IAV flow by setting the `microDeposits` option to *true*. This option gives the user the ability to initially select either the micro-deposit method of bank verification or IAV, as well as fallback to selecting the micro-deposit method of bank verification if un-successful connecting a bank through the IAV flow. 
 
 ![Screenshot of micro-deposit fallback](/images/microdeposits-fallback.png "fallback to micro-deposits")
 
-Alternatively, if your application sets the `fallbackToMicroDeposits` option to *true*, a fallback selection screen will appear after **two** failed attempts if there was an issue with connecting a bank using IAV. This selection screen asks the user to choose from either the traditional micro-deposit method of bank verification or re-attempt the IAV flow choosing a different financial institution.
+#### `fallbackToMicroDeposits`
+If your application sets the `fallbackToMicroDeposits` option to *true*, a fallback selection screen will appear after **two** failed attempts if there was an issue with connecting a bank using IAV. This selection screen asks the user to choose from either the traditional micro-deposit method of bank verification or re-attempt the IAV flow choosing a different financial institution.
 
-#### IAV styles
+#### `backButton`
+By default, a back button will **not** be displayed throughout the IAV flow. If your application sets the `backButton` option to *true*, a back button will appear in the lower left corner of the container throughout the IAV flow.
+
+#### `subscriber`
+An optional `subscriber` function can be used if your application is wanting to receive additional information on where the user is within the IAV flow, as well as if a user-facing message was presented to the user. `subscriber` is a function that will be called with an object containing a `currentPage` and an optional `error` attribute. `currentPage` will be a string value that identifies what page the user is on in the IAV flow. If an error occurs, the `error` attribute will be returned along with `currentPage`. `error` will be a JSON object, which includes a top-level error `code` and a `message` (similar to [common errors](https://docsv2.dwolla.com/#errors) in the API). Reference the following table for possible values:
+
+|     Attribute     | Value |
+|:-------------|-------------|
+| currentPage | `BankSearch` <br> `BankLogin` <br> `MFA` <br> `SelectAccount` <br> `SuccessIAV` <br> `SelectVerificationMethod` <br> `SubmitBankAccountDetails` <br> `SuccessMicroDeposits` | 
+| error | **code** and **message**: <br> `InvalidLogin` - "Please make sure your login or security information is correct." <br> `AccountNotFound` - "Sorry, we’re unable to find your {} account. Please try again or use a different account." <br> `UnsupportedSite` - "Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution." <br> `AlreadyLoggedIn` - "If you're currently logged in to your {} account, please log out and try again." <br> `VisitSite` - "We’re unable to process your information because the {} site is currently requiring additional action from you. Please resolve this, then try again." <br> `UnavailableSite` - "Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later." | 
+
+##### **Example subscriber callback**
+
+```noselect
+{
+  "currentPage":"BankLogin",
+  "error":{
+    "code":"InvalidLogin",
+    "message":"Please make sure your login or security information is correct."
+  }
+}
+```
+
+#### `stylesheets`
 Dwolla provides a list of CSS classes available for styling certain elements of the IAV flow. These elements can be easily customized to match the look and feel of your application, and are included within the `options` JavaScript object of the function dwolla.iav.start(). You can specify one or many stylesheets as a list within the `stylesheets` attribute. By default, the elements within your specified container are responsive to any change in screen size.
 
-##### Demo Dwolla.js and IAV customization <a href="https://www.dwolla.com/dwollajs-bank-verification">here.</a>
+<a href="https://www.dwolla.com/dwollajs-bank-verification" target="_blank" class="btn secondary medium">Demo Dwolla.js</a>
 
 #### List of CSS classes
 ```cssnoselect
-/* Implement Dwolla's styles */
+/* Available css classes for customization*/
 .dwolla-iav-text-box,
 .dwolla-iav-button,
 .dwolla-iav-header,
 .dwolla-iav-text,
 .dwolla-iav-link,
 .dwolla-iav-error,
-.dwolla-iav-label {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 300;
-}
-
-.dwolla-iav-header {
-    font-weight: 300;
-    margin-bottom: 2.5rem;
-}
-
-.dwolla-iav-text-box {
-    box-shadow: none;
-    border: 1px solid #ddd;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-radius: 0;
-}
-
-.dwolla-iav-text-box:focus {
-    border-color: #1e88e5;
-}
-
-.dwolla-iav-link {
-    color: #1e88e5;
-    cursor: pointer;
-}
-
-.dwolla-iav-link:hover {
-    color: #1565c0;
-}
-
-.dwolla-iav-button {
-    background: #1e88e5;
-    color: white;
-    border-radius: 3px;
-}
-
-.dwolla-iav-button:hover {
-    background: #4D8CD4;
-    cursor: pointer;
-}
-
-.dwolla-iav-button:active {
-    background: #1565c0;
-}
-
-.dwolla-iav-check-image {
-    background: #1e88e5;
-}
-
-.dwolla-iav-radio-hover {
-    background-color: #fff;
-}
-
-.dwolla-iav-radio-selected {
-    background-color: #1e88e5;
-}
+.dwolla-iav-label,
+.dwolla-iav-header,
+.dwolla-iav-text-box,
+.dwolla-iav-text-box:focus,
+.dwolla-iav-link,
+.dwolla-iav-link:hover,
+.dwolla-iav-button,
+.dwolla-iav-button:hover,
+.dwolla-iav-button:active,
+.dwolla-iav-check-image,
+.dwolla-iav-radio-hover,
+.dwolla-iav-radio-selected
 ```
 
 * * *
