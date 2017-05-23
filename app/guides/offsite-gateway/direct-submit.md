@@ -6,7 +6,7 @@ guide:
     name: offsite-gateway
     step: '1'
 title: Off-Site Gateway | Direct Submit
-description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
+description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application. Learn more about how to utilize the direct submit option.
 ---
 
 # Off-Site Gateway Checkout
