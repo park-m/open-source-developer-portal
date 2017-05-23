@@ -4,7 +4,7 @@ section: Dwolla.js
 type: article
 title:  "On-demand bank transfers"
 weight: 2
-description: "Quickly integrate instant bank verification for developers using the Dwolla ACH API."
+description: "Quickly integrate instant bank verification for developers using the Dwolla ACH API, allowing for easy use of on-demand bank transfers."
 ---
 
 # Dwolla.js
