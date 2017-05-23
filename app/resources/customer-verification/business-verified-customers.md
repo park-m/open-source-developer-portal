@@ -4,7 +4,7 @@ section: Customer verification
 type: article
 title:  "Business verified Customers"
 weight: 1
-description: "How to verify a customer before sending a bank transfer with Dwolla's ACH API."
+description: "How to verify a business customer before sending a bank transfer with Dwolla's ACH API."
 ---
 
 # Business verified Customers
