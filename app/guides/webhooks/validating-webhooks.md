@@ -5,7 +5,7 @@ type: guide
 guide: 
     name: webhooks
     step: '3'
-title: Webhooks
+title: Webhooks | Validating Webhooks
 description: Webhooks for payments within your application by utilizing our open API with no per transaction fees. 
 ---
 
