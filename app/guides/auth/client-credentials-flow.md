@@ -5,7 +5,7 @@ type: guide
 guide: 
     name: auth
     step: '2'
-title: Dwolla OAuth 2.0
+title: Dwolla OAuth 2.0 | Client Credentials Flow
 description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
 ---
 
