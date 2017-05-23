@@ -6,6 +6,7 @@ guide:
     name: receive-money
     step: '2'
 title:  "Step 2: Check the transfer status"
+description: Use Dwolla's ACH payment API to receive bank transfers and check transfer statuses.
 ---
 
 # Step 2: Check the transfer status
