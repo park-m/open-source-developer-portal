@@ -6,7 +6,7 @@ guide:
     name: webhooks
     step: '4'
 title: Webhooks | Process Webhooks
-description: Webhooks for payments within your application by utilizing our open API with no per transaction fees. 
+description: Process webhooks for payments within your application by utilizing our open API with no per transaction fees. 
 ---
 
 # Example scenario
