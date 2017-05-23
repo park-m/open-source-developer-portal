@@ -4,7 +4,7 @@ section: Account types
 type: article
 title:  "Transfer accounts"
 weight: 0
-description: "Getting started with Dwolla's bank transfer API."
+description: "Getting started with Dwolla's bank transfer API: Transfer accounts."
 ---
 
 # Account types
