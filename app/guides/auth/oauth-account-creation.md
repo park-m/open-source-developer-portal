@@ -6,7 +6,7 @@ guide:
     name: auth
     step: '1a'
 title: Dwolla OAuth 2.0 | OAuth Account Creation
-description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application. 
+description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application. Learn more about OAuth account creation.
 ---
 
 # Overview
