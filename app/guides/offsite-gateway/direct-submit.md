@@ -5,7 +5,7 @@ type: guide
 guide: 
     name: offsite-gateway
     step: '1'
-title: Off-Site Gateway
+title: Off-Site Gateway | Direct Submit
 description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
 ---
 
