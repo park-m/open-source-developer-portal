@@ -6,7 +6,7 @@ guide:
     name: offsite-gateway
     step: '2'
 title: Off-Site Gateway | Server to Server
-description:  Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
+description:  Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application. Learn more about how to utilize a server-to-server submission.
 ---
 
 # Off-Site Gateway Checkout
