@@ -6,6 +6,7 @@ guide:
     step: 1a
 type: guide
 title:  "Step 1: Access API onboarding"
+description: Leverage Dwolla's ach payment API to receive money via bank transfer.
 ---
 
 # Step 1: Create a customer using the Access API
