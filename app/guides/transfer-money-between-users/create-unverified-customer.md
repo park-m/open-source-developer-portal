@@ -6,6 +6,7 @@ guide:
     name: transfer-money-between-users
     step: '4'
 title:  "Step 4: Creating an unverified customer"
+description: Create an unverified customer within Dwolla's ACH payment API.
 ---
 
 # Step 4: Creating an Unverified Customer
