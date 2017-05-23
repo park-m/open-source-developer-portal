@@ -4,7 +4,7 @@ section: Funding source verification
 type: article
 title:  "Instant account verification"
 weight: 1
-description: "Programmatically verify a bank to initiate a bank transfer."
+description: "Programmatically verify a bank to initiate a bank transfer using instant account verification."
 ---
 
 # Funding source verification
