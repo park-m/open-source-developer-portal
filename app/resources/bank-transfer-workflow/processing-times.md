@@ -4,7 +4,7 @@ section: Bank transfer workflow
 type: article
 title:  "Processing times"
 weight: 0
-description: "Bank transfer API to programmatically send money online."
+description: "Processing times for Dwolla's bank transfer API to programmatically send money online."
 ---
 
 # Bank transfer workflow
