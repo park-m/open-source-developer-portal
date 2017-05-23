@@ -6,6 +6,7 @@ guide:
     name: transfer-money-between-users
     step: '2'
 title:  "Step 2: Create a verified customer"
+description: Create a verified customer within your Access API application. 
 ---
 
 # Step 2: Create a Verified Customer
