@@ -6,7 +6,7 @@ guide:
     name: migrate-to-v2
     step: '5'
 title: Migrate to Access API | v1 to v2 Endpoint Changes
-description: Underlying principles of Dwolla's Access API and guidance on upgrading your application from Dwolla's legacy v1 API. 
+description: Understand the v1 to v2 endpoints on Dwolla's Access API, and receive guidance on upgrading your application from Dwolla's legacy v1 API. 
 ---
 
 # V1 to Access API endpoint changes
