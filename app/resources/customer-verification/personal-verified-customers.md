@@ -7,7 +7,7 @@ weight: 0
 description: "How to verify a customer before sending a bank transfer with Dwolla's ACH API."
 ---
 
-## Personal verified Customers
+# Personal verified Customers
 
 ### Create a verified personal Customer
 
