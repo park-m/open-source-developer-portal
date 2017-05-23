@@ -9,7 +9,7 @@ title: Dwolla OAuth 2.0 | Client Credentials Flow
 description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
 ---
 
-## Overview - Obtaining an application access token
+# Overview - Obtaining an application access token
 
 The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) is used when an application needs to obtain permission to act on its own behalf. An application will exchange it's `client_id`, `client_secret`, and `grant_type=client_credentials` for an [application access token](https://docsv2.dwolla.com/#application-access-token). An application access token can then be used to make calls to the Dwolla API on behalf of the application, for example, when you create a webhook subscription, retrieve events, and list webhooks fired to a subscribed webhook endpoint. The primary reason for obtaining an application access token is for managing webhooks and events. However, Dwolla has modified this grant type by allowing applications to access Access API [Customer](https://docsv2.dwolla.com/#customers) related endpoints using the application access token if the `ManageCustomers` scope is enabled on the application.
 
