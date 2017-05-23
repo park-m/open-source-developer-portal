@@ -6,6 +6,7 @@ guide:
     name: send-money
     step: 1b
 title:  "Step 1: Transfer onboarding"
+description: Learn how to set up customer accounts via the Dwolla Transfer API. 
 ---
 
 # Step 1: Create a Dwolla Direct account for the recipient
