@@ -6,7 +6,7 @@ guide:
     name: migrate-to-v2
     step: '2'
 title: Migrate to Access API | Making Requests
-description: Underlying principles of Dwolla's Access API and guidance on upgrading your application from Dwolla's legacy v1 API. 
+description: Understand how to make requests on Dwolla's Access API, and receive guidance on upgrading your application from Dwolla's legacy v1 API. 
 ---
 
 # Making requests
