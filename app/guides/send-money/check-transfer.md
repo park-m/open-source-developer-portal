@@ -6,6 +6,7 @@ guide:
     name: send-money
     step: '4'
 title:  "Step 4: Check the transfer status"
+description: Use Dwolla's ACH payment API to check the transfer status of bank transfers sent to other parties.
 ---
 
 # Step 4: Check the transfer status
