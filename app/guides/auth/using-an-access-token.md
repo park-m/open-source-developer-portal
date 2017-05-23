@@ -5,7 +5,7 @@ type: guide
 guide: 
     name: auth
     step: '3'
-title: Dwolla OAuth 2.0
+title: Dwolla OAuth 2.0 | Using An Access Token
 description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
 ---
 
