@@ -5,7 +5,7 @@ type: guide
 guide: 
     name: migrate-to-v2
     step: '6'
-title: Migrate to the Access API
+title: Migrate to Access API | Other Notable Changes
 description: Underlying principles of Dwolla's Access API and guidance on upgrading your application from Dwolla's legacy v1 API. 
 ---
 
