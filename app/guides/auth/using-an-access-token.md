@@ -6,7 +6,7 @@ guide:
     name: auth
     step: '3'
 title: Dwolla OAuth 2.0 | Using An Access Token
-description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
+description: Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application. Learn more about using an access token. 
 ---
 
 # Making a request to the Access API
