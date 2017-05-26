@@ -4,7 +4,7 @@ section: Bank transfer workflow
 type: article
 title:  "Transfer failures"
 weight: 1
-description: "Bank transfer API to programmatically send money online"
+description: "How to handle transfer failures in a bank transfer API to programmatically send money online."
 ---
 
 # Bank transfer workflow

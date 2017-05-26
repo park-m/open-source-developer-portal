@@ -4,7 +4,7 @@ section: OAuth refresh strategies
 type: article
 title: "Refresh on-demand"
 weight: 1
-description: "Manage OAuth access tokens for Dwolla's bank transfer API."
+description: "Manage OAuth access tokens for Dwolla's bank transfer API: refreshing on demand."
 ---
 
 # OAuth refresh strategies - Transfer

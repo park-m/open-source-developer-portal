@@ -6,6 +6,7 @@ guide:
     name: transfer-money-between-users
     step: '6'
 title:  "Step 6: Create a transfer"
+description: How to create a transfer between users when leveraging Dwolla's ACH payment API. 
 ---
 
 # Step 6: Create a transfer

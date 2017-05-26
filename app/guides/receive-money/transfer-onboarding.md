@@ -6,6 +6,7 @@ guide:
     step: 1b
 type: guide
 title:  "Step 1: Transfer onboarding"
+description: Use Dwolla's Transfer API to receive bank transfers from customers. 
 ---
 
 # Step 1: Create a Dwolla Direct account for the payer

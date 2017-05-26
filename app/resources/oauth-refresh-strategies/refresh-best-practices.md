@@ -4,7 +4,7 @@ section: OAuth refresh strategies
 type: article
 title: "Refresh best practices"
 weight: 2
-description: "Manage OAuth access tokens for Dwolla's bank transfer API."
+description: "Manage OAuth access tokens for Dwolla's bank transfer API: learn refresh best practices."
 ---
 
 # OAuth refresh strategies - Transfer

@@ -6,6 +6,7 @@ guide:
     name: transfer-money-between-users
     step: '5'
 title:  "Step 5: Attach a verified funding source"
+description: Link a verified bank account to a customer record within Dwolla's bank transfer API. 
 ---
 
 # Step 5: Attach a verified funding source

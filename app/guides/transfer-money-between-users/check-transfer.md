@@ -6,6 +6,7 @@ guide:
     name: transfer-money-between-users
     step: '7'
 title:  "Step 7: Check the status of your transfer"
+description: Check the status of your transfer within Dwolla's ACH payment API when transferring money between users.
 ---
 
 # Step 7: Check the status of your transfer

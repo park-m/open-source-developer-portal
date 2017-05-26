@@ -4,10 +4,10 @@ section: Customer verification
 type: article
 title:  "Handling verification statuses"
 weight: 2
-description: "How to verify a customer before sending a bank transfer with Dwolla's ACH API."
+description: "How to handle customer verification statuses before sending a bank transfer with Dwolla's ACH API."
 ---
 
-## Handling verification statuses
+# Handling verification statuses
 
 There are various reasons a Customer will result in a status other than `verified` which you will want to account for after the Customer is created. For example, the `retry` status can occur when an individual mis-keys or uses incorrect identifying information upon Customer creation. 
 

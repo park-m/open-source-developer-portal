@@ -4,7 +4,7 @@ section: Dwolla.js
 type: article
 title:  "Add a bank account"
 weight: 0
-description: "Quickly integrate instant bank verification for developers using the Dwolla ACH API."
+description: "Quickly integrate instant bank verification for developers to add a bank account using the Dwolla ACH API."
 ---
 
 # Dwolla.js

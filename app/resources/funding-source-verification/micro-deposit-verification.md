@@ -4,7 +4,7 @@ section: Funding source verification
 type: article
 title:  "Micro-deposit verification"
 weight: 0
-description: "Programmatically verify a bank to initiate a bank transfer."
+description: "Programmatically verify a bank to initiate a bank transfer using micro-deposit verification."
 ---
 
 # Funding source verification

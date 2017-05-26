@@ -5,8 +5,8 @@ type: guide
 guide: 
     name: webhooks
     step: '1'
-title: Webhooks
-description: Webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees. 
+title: Webhooks | Obtain Authorization
+description: Obtain authorization webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees. 
 ---
 
 # Step 1: Obtain authorization

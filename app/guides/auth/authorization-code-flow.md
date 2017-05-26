@@ -5,11 +5,11 @@ type: guide
 guide: 
     name: auth
     step: '1'
-title: Dwolla OAuth 2.0
-description:  Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
+title: Dwolla OAuth 2.0 | Authorization Code Flow
+description:  Obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application. Learn more about the authorization code flow.
 ---
 
-## Overview - Obtaining an account access token
+# Overview - Obtaining an account access token
 
 The [authorization code](https://tools.ietf.org/html/rfc6749#section-4.1) flow is the most common OAuth flow and is used when an application is wanting to obtain permission to act on behalf of a user. This is a redirection-based flow where the user (Resource owner) is sent from your application to Dwolla (typically in a web-browser) to authenticate and authorize your app. Once the user grants authorization, Dwolla (the Authorization Server) will redirect them back to your application where you'll exchange a temporary authorization code for an account `access_token` and `refresh_token` pair. An account access token can then be used to make calls  like transfer money, add funding sources, and more to the Dwolla API on behalf of the user. 
 

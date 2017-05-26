@@ -5,8 +5,8 @@ type: guide
 guide: 
     name: webhooks
     step: '2'
-title: Webhooks
-description: Webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees. 
+title: Webhooks | Create Subscription
+description: Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees. 
 ---
 
 # Step 2: Create a webhook subscription

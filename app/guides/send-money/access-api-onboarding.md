@@ -6,6 +6,7 @@ guide:
     step: 1a
 type: guide
 title:  "Step 1: Access API onboarding"
+description: Use Dwolla's ACH payment API to send money to other users. 
 ---
 
 # Step 1: Create recipients using the Access API

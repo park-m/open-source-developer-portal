@@ -4,7 +4,7 @@ section: Account types
 type: article
 title:  "Access API accounts"
 weight: 1
-description: "Getting started with Dwolla's bank transfer API."
+description: "Getting started with Dwolla's bank transfer API: Access API accounts."
 ---
 
 # Account types

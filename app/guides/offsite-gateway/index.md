@@ -6,7 +6,7 @@ guide:
     name: offsite-gateway
     step: overview
 title: Off-Site Gateway
-description: 
+description: Utlize Dwolla's Off-Site Gateway to obtain an OAuth access token, used to access data in the Dwolla API on behalf of a user or application.
 ---
 
 # Off-Site Gateway Checkout

@@ -6,6 +6,7 @@ guide:
     name: send-money
     step: '2'
 title:  "Step 2: Fetch funding sources"
+description: Fetch funding sources within Dwolla's bank transfer API.
 ---
 
 # Step 2: Fetch funding sources
