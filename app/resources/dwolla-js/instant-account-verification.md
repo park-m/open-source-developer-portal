@@ -10,9 +10,9 @@ description: "Integrate instant bank verification for developers using the Dwoll
 # Dwolla.js
 
 ## Using Dwolla.js for Instant Account Verification (IAV)
-For Access API partners, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their customer's bank or credit union account. By calling a separate function `dwolla.iav.start()`, the Access API partner application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as: 
+For Access API partners, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their customer's bank or credit union account. By calling a separate function `dwolla.iav.start()`, the Access API partner application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as:
 
-* `stylesheets` - a list of CSS stylesheets for styling the IAV flow 
+* `stylesheets` - a list of CSS stylesheets for styling the IAV flow
 * `microDeposits` - presents a selection screen for the user to choose the micro-deposit method of bank verification throughout the IAV flow
 * `fallbackToMicroDeposits` - presents a selection screen for the user to fallback to selecting the micro-deposit method of bank verification within the IAV flow
 * `backButton` - displays a back button throughout the IAV flow
@@ -67,27 +67,9 @@ Error callbacks will contain a similar JSON error response body as [common error
 }
 ```
 
-### Testing IAV success and error scenarios in Sandbox
-Dwolla's Sandbox environment uses a fake service which allows you to simulate the end-user experience for adding and verifying a bank account within the IAV flow. The default "success" scenario is a happy path flow that includes: a single set of MFA questions, presentation of two valid accounts and one account without a routing number. Any text can be entered in the input fields to allow you to proceed through the IAV flow.
-
-To help you test error scenarios, a flag and an option can be used in the first field (usually username or ID) for the bank you are trying authenticate. The remaining input fields in the flow can be any string of text, as we allow you to proceed through the flow regardless of the information entered. Use the following flag and option values to test various error scenarios:
-
-|     Flag      |   Option     | User-facing message |
-|:------------- |:----------------- |----------------|-------------|
-| -e  | InvalidLogin | Please make sure your login or security information is correct. | 
-| -e  | AccountNotFound | Sorry, we’re unable to find your {} account. Please try again or use a different account. | 
-| -e  | UnsupportedSite | Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution. | 
-| -e  | AlreadyLoggedIn | If you're currently logged in to your {} account, please log out and try again. | 
-| -e  | VisitSite | We’re unable to process your information because the {} site is currently requiring additional action from you. Please resolve this, then try again. | 
-| -e  | UnavailableSite | Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later. | 
-
-#### **Example error scenario**
-![Screenshot of IAV user facing error message](/images/IAVErrorMessage.png "IAV user facing error")
-
-
 ## Options and customization
 #### `microDeposits`
-Your application can present the micro-deposit method of bank verification throughout the IAV flow by setting the `microDeposits` option to *true*. This option gives the user the ability to initially select either the micro-deposit method of bank verification or IAV, as well as fallback to selecting the micro-deposit method of bank verification if un-successful connecting a bank through the IAV flow. 
+Your application can present the micro-deposit method of bank verification throughout the IAV flow by setting the `microDeposits` option to *true*. This option gives the user the ability to initially select either the micro-deposit method of bank verification or IAV, as well as fallback to selecting the micro-deposit method of bank verification if un-successful connecting a bank through the IAV flow.
 
 ![Screenshot of micro-deposit fallback](/images/microdeposits-fallback.png "fallback to micro-deposits")
 
@@ -102,8 +84,8 @@ An optional `subscriber` function can be used if your application is wanting to 
 
 |     Attribute     | Value |
 |:-------------|-------------|
-| currentPage | `BankSearch` <br> `BankLogin` <br> `MFA` <br> `SelectAccount` <br> `SuccessIAV` <br> `SelectVerificationMethod` <br> `SubmitBankAccountDetails` <br> `SuccessMicroDeposits` | 
-| error | **code** and **message**: <br> `InvalidLogin` - "Please make sure your login or security information is correct." <br> `AccountNotFound` - "Sorry, we’re unable to find your {} account. Please try again or use a different account." <br> `UnsupportedSite` - "Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution." <br> `AlreadyLoggedIn` - "If you're currently logged in to your {} account, please log out and try again." <br> `VisitSite` - "We’re unable to process your information because the {} site is currently requiring additional action from you. Please resolve this, then try again." <br> `UnavailableSite` - "Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later." | 
+| currentPage | `BankSearch` <br> `BankLogin` <br> `MFA` <br> `SelectAccount` <br> `SuccessIAV` <br> `SelectVerificationMethod` <br> `SubmitBankAccountDetails` <br> `SuccessMicroDeposits` |
+| error | **code** and **message**: <br> `InvalidLogin` - "Please make sure your login or security information is correct." <br> `AccountNotFound` - "Sorry, we’re unable to find your {BANK NAME} account. Please try again or use a different account." <br> `UnsupportedSite` - "Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution." <br> `AlreadyLoggedIn` - "If you're currently logged in to your {BANK NAME} account, please log out and try again." <br> `VisitSite` - "We’re unable to process your information because the {BANK NAME} site is currently requiring additional action from you. Please resolve this, then try again." <br> `UnavailableSite` - "Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later." |
 
 ##### **Example subscriber callback**
 
