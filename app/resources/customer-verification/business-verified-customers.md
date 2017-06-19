@@ -138,7 +138,7 @@ print($new_customer); # => https://api-sandbox.dwolla.com/customers/AB443D36-375
 ?>
 ```
 
-You’ll need to provide the the a full name, email address, home address, date of birth, and the last four digits of the Social Security Number for the authorized representative of the business. In addition to the authorized representative’s identifying information, you’ll also need to supply information which helps Dwolla identify the business. Required information includes: `businessClassification`, `businessType`, `businessName`, and `ein`.
+You’ll need to provide the the a full name, email address, business address, date of birth, and the last four digits of the Social Security Number for the authorized representative of the business. In addition to the authorized representative’s identifying information, you’ll also need to supply information which helps Dwolla identify the business. Required information includes: `businessClassification`, `businessType`, `businessName`, and `ein`.
 
 Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be a HTTP 201/Created with the URL of the new Customer resource contained in the `Location` header.
 
