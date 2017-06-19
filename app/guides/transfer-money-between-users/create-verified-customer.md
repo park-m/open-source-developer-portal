@@ -6,14 +6,14 @@ guide:
     name: transfer-money-between-users
     step: '2'
 title:  "Step 2: Create a verified customer"
-description: Create a verified customer within your Access API application. 
+description: Create a verified customer within your Access API application.
 ---
 
 # Step 2: Create a Verified Customer
 
 First, we’ll create a `Verified Customer` for Jane Merchant.
 
-The following information is required for a `Verified Customer`. In this example, we use business verified customers to represent the merchant who will be receiving funds. 
+The following information is required for a `Verified Customer`. In this example, we use business verified customers to represent the merchant who will be receiving funds.
 
 ```raw
 POST https://api-sandbox.dwolla.com/customers
@@ -26,7 +26,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
   "email": "janeMerchant@email.com",
   "ipAddress": "127.0.0.1",
   "type": "business",
-  "address": "99-99 33rd St",
+  "address1": "99-99 33rd St",
   "city": "Some city",
   "state": "NY",
   "postalCode": "11101",
@@ -124,7 +124,7 @@ $new_customer = $customersApi->create([
   'lastName' => 'Merchant',
   'email' => 'janeMerchant@email.com',
   'type' => 'business',
-  'address' => '99-99 33rd St',
+  'address1' => '99-99 33rd St',
   'city' => 'Some City',
   'state' => 'NY',
   'postalCode' => '11101',
@@ -163,7 +163,7 @@ catch (Exception e) {
 }
 ```
 
-When the customer is created, you’ll receive the customer URL in the location header. 
+When the customer is created, you’ll receive the customer URL in the location header.
 
 **Important:** There are various reasons a Verified Customer will result in a status other than `verified` which you will want to account for after the Customer is created. Reference the Customer verification resource article for more information on [handling verification statuses](https://developers.dwolla.com/resources/customer-verification/handling-verification-statuses.html).
 
