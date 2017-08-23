@@ -20,7 +20,7 @@ In this article we’ll cover the steps to get your Sift Account set up, as well
 ### Integration overview
 
 * [Register](https://siftscience.com/signup) for a Sift Account
-* Visit `Integrations` under your account settings, or visit <a href="https://dashboard.dwolla.com/account/integrations" target="_blank">https://dashboard.dwolla.com/account/integrations</a>
+* Visit `Integrations` under your account settings, or visit [https://dashboard.dwolla.com/account/integrations](https://dashboard.dwolla.com/account/integrations)
 * Toggle to turn Sift on, and enter your Sift Key
 
 ![Animation of Sift Science Integration](/images/sift-integration.gif "Sift Science Integration")
