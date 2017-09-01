@@ -77,7 +77,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 
 <span class=c># Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)</span>
 <span class=n>fees</span> <span class=o>=</span> <span class=n>account_token</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>transfer_url</span><span class=p>)</span>
-<span class=n>fees</span><span class=o>.</span><span class=n>body</span><span class=p>[</span><span class=s>'stats'</span><span class=p>]</span> <span class=c># =&gt; 'pending'</span>
+<span class=n>fees</span><span class=o>.</span><span class=n>body</span><span class=p>[</span><span class=s>'status'</span><span class=p>]</span> <span class=c># =&gt; 'pending'</span>
 
 <span class=c># Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python</span>
 <span class=n>transfers_api</span> <span class=o>=</span> <span class=n>dwollaswagger</span><span class=o>.</span><span class=n>TransfersApi</span><span class=p>(</span><span class=n>client</span><span class=p>)</span>
