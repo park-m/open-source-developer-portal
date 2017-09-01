@@ -224,8 +224,7 @@ If you receive a `customer_verification_document_failed` webhook, you’ll need 
 * ScanNotUploaded
 * ScanIdTypeNotSupported
 * ScanNameMismatch
-* ScanFailedOther
-* FailedOther
+
 
 #### Request and response:
 

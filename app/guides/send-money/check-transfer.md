@@ -85,7 +85,7 @@ transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 fees = account_token.get(transfer_url)
-fees.body['stats'] # => 'pending'
+fees.body['status'] # => 'pending'
 
 # Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
 transfers_api = dwollaswagger.TransfersApi(client)
