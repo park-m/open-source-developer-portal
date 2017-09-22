@@ -45,7 +45,7 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 new_customer = account_token.post "customers", request_body
-new_customer.headers[:location] # => "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
+new_customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 new_customer = DwollaSwagger::CustomersApi.create(:body => request_body)
@@ -279,7 +279,7 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = account_token.post "transfers", request_body
-transfer.headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
+transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 transfer = DwollaSwagger::TransfersApi.create(:body => request_body)

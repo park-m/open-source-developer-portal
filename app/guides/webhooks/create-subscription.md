@@ -35,7 +35,7 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 subscription = app_token.post "webhook-subscriptions", request_body
-subscription.headers[:location] # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
+subscription.response_headers[:location] # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 subscription = DwollaSwagger::WebhooksubscriptionsApi.create(:body => request_body)

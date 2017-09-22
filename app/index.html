@@ -36,7 +36,7 @@ sampleRuby: >
 
     transfer = account_token.post "transfers", request_body
 
-    transfer.headers[:location] # => "https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+    transfer.response_headers[:location] # => "https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
 
     ```
 
