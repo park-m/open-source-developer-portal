@@ -92,7 +92,7 @@ request_body = {
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = app_token.post "transfers", request_body
-transfer.headers[:location] # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
+transfer.response_headers[:location] # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
 ```
 ```php
 <?php

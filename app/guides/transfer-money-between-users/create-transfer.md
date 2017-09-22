@@ -55,7 +55,7 @@ request_body = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 transfer = app_token.post "transfers", request_body
-transfer.headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
+transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 
 # Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
 transfer = DwollaSwagger::TransfersApi.create(:body => request_body)

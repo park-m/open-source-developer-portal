@@ -171,7 +171,7 @@ customer_url = 'https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46
 
 file = Faraday::UploadIO.new('mclovin.jpg', 'image/jpeg')
 document = app_token.post "#{customer_url}/documents", file: file, documentType: 'license'
-document.headers[:location] # => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
+document.response_headers[:location] # => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
