@@ -13,124 +13,49 @@ description: "How to handle transfer failures in a bank transfer API to programm
 
 There are several reasons bank transfers can fail, a few of which are outlined below. When a transfer fails it is usually a result of an ACH failure which is assigned an ACH return code after being rejected from the financial institution. A few common failure cases include:
 
-- **Insufficient Funds (R01):** Pending transfers can fail due to insufficient funds from the source bank account. 
+- **Insufficient Funds (R01):** Pending transfers can fail due to insufficient funds from the source bank account.
 - **No Account/Unable to Locate Account (R03):** The recipient of a transfer has closed their bank account or has incorrectly entered their bank account/routing number when attaching their funding source.
 - **Customer Advises Not Authorized (R10):** The owner of a bank account has told their bank that this transfer was unauthorized.
 
 ### What occurs in the Dwolla system when a bank transfer fails?
+When a bank transfer failure occurs there are a subset of systematic actions Dwolla may take on the `Customer` and/or `Funding Source` based on the ACH return code. It is recommended to have an active [webhook subscription](https://docsv2.dwolla.com/#create-a-webhook-subscription), which is used to listen for events relating to any Customer or Funding Source state change. Please refer to the table below to understand the systematic actions that Dwolla may take for Customer and Funding Source resources, as well as the events that are created.
 
-Bank accounts will automatically be removed from the Dwolla system for all ACH return codes except an `R01`. If subscribed to webhooks, your application will receieve a webhook with the `funding_source_removed` event along with the `transfer_failed` event.
+| Customer action | Funding Source action |
+|-----------------|-----------------------|
+| &#8226; **none** <br/> &#8226; **deactivated** - `customer_deactivated` | &#8226; **none** <br/> &#8226; **unverified** - `customer_funding_source_unverified` <br/> &#8226; **removed** - `customer_funding_source_removed` <br/> &#8226; **unverified** - `customer_funding_source_unverified` and **removed** - `customer_funding_source_removed` |
 
-When a bank transfer fails from a verified account (e.g. [Transfer CIP Verified](/resources/account-types/transfer-accounts.html) or [Access API Verified Customer](/resources/account-types/access-api-accounts.html) to a recipient), funds will return to the sending account’s Dwolla balance. For other transfer scenarios, funds will return to the source bank account. 
 
 ### Retrieving the reason for a failed bank transfer
 
-When a bank transfer fails its status will be updated to `failed`. If your application is subscribed to webhooks, you’ll receive either the `transfer_failed` event if the transfer belongs to a Dwolla account or the `customer_transfer_failed` event if the transfer belongs to an Access API Customer. The event contains a links to the associated account as well as the transfer resource. To get the return code and reason for the transfer failure you’ll first retrieve the transfer by its ID. 
+When a bank transfer fails its status will be updated to `failed`. If your application is subscribed to webhooks, you’ll receive either the `transfer_failed` event if the transfer belongs to a Dwolla account or the `customer_transfer_failed`/`customer_bank_transfer_failed`(*Verified Customer only*) event if the transfer belongs to an Access API Customer. The event contains a links to the associated account as well as the transfer resource. To obtain more information on the transfer failure, you’ll first retrieve the transfer by its ID. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docsv2.dwolla.com/#retrieve-a-transfer-failure-reason). Upon success, the response will contain information on the ACH return code and description, as well as `_links` to the Funding Source and Customer that triggered the bank transfer failure.
 
 #### Request and response (view schema in 'raw')
-```raw
-GET https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388
-Accept: application/vnd.dwolla.v1.hal+json
-Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
-
-...
-
-{
-  "_links": {
-    "self": {
-      "href": "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388",
-      "type": "application/vnd.dwolla.v1.hal+json",
-      "resource-type": "transfer"
-    },
-    "source": {
-      "href": "https://api-sandbox.dwolla.com/funding-sources/71afa37f-17ca-4132-9646-fd3ab83fc8b5",
-      "type": "application/vnd.dwolla.v1.hal+json",
-      "resource-type": "funding-source"
-    },
-    "destination": {
-      "href": "https://api-sandbox.dwolla.com/customers/99dd22de-6ec6-4ba1-a0d1-09eb169a4bb1",
-      "type": "application/vnd.dwolla.v1.hal+json",
-      "resource-type": "customer"
-    },
-    "failure": {
-      "href": "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure",
-      "type": "application/vnd.dwolla.v1.hal+json",
-      "resource-type": "failure"
-    }
-  },
-  "id": "8997ebed-69be-e611-80ea-0aa34a9b2388",
-  "status": "failed",
-  "amount": {
-    "value": "442.00",
-    "currency": "usd"
-  },
-  "created": "2016-12-09T23:48:11.910Z",
-  "clearing": {
-    "source": "standard"
-  }
-}
-```
-```ruby
-transfer_url = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
-
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
-transfer = account_token.get transfer_url
-transfer.status # => "failed"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.by_id(transfer_url)
-transfer.status # => "failed"
-
-transfer = DwollaSwagger::TransfersApi.by_id('https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388')
-```
-```javascript
-var transferUrl = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
-
-// For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
-accountToken
-  .get(transferUrl)
-  .then(res => res.body.status); // => 'failed'
-```
-```python
-transfer_url = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
-
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-# For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
-fees = account_token.get(transfer_url)
-fees.body['status'] # => 'failed'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
-transfer = transfers_api.by_id(transfer_url)
-transfer.status # => 'failed'
-```
-```php
-<?php
-$transferUrl = 'https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
-
-$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
-
-$transfer = $transfersApi->byId($transferUrl);
-$transfer->status; # => "failed"
-?>
-```
-
-Dwolla returns a `failure` link within the response that can be used to lookup the ACH return code and corresponding description.
-
 ```raw
 GET https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 {
-  "_links": {
-    "self": {
-      "href": "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure"
-    }
-  },
-  "code": "R1",
-  "description": "Insufficient Funds"
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "failure"
+        },
+        "failed-funding-source": {
+            "href": "https://api.dwolla.com/funding-sources/285ea6f4-c45d-4e15-ad33-21f51461f437",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "customer": {
+            "href": "https://api.dwolla.com/customers/be2d2322-fdee-4361-8722-4289f5601604",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        }
+    },
+    "code": "R03",
+    "description": "No Account/Unable to Locate Account",
+    "explanation": "The account number does not correspond to the individual identified in the entry or a valid account."
 }
 ```
 ```ruby
@@ -138,17 +63,17 @@ transfer_url = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
-failure = account_token.get "#{transfer_url}/failure"
+failure = app_token.get "#{transfer_url}/failure"
 failure.code # => "R1"
 ```
 ```php
 <?php
 $transfer = '8997ebed-69be-e611-80ea-0aa34a9b2388';
 
-$TransfersApi = DwollaSwagger\TransfersApi($apiClient);
+$TransfersApi = new DwollaSwagger\TransfersApi($apiClient);
 
 $failureReason = $TransfersApi->failureById($transfer);
-print($failureReason->status); # => "R01"
+print($failureReason->code); # => "R01"
 ?>
 ```
 ```python
@@ -156,14 +81,14 @@ transfer_url = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
-failure = account_token.get('%s/failure' % transfer_url)
+failure = app_token.get('%s/failure' % transfer_url)
 failure.body['code'] # => 'R1'
 ```
 ```javascript
 var transferUrl = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388';
 
 // For Access API applications, an appToken can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
-accountToken
+appToken
   .get(`${transferUrl}/failure`)
   .then(res => res.body.code); // => 'R1'
 ```
