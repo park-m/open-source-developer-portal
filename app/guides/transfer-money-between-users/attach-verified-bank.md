@@ -39,9 +39,6 @@ customer_url = 'https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898
 customer = app_token.post "#{customer_url}/iav-token"
 customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.get_customer_iav_token(customer_url)
-customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
@@ -52,11 +49,10 @@ appToken
   .then(res => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 ```
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer_url = 'http://api.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
-customers_api = dwollaswagger.CustomersApi(client)
 
-token = customers_api.get_customer_iav_token(customer_url)
-print token['token'] # => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+app_token.post('%s/iav-token' % customer_url)
 ```
 ```php
 <?php

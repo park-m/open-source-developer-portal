@@ -60,10 +60,6 @@ customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "#{customer_url}/funding-sources-token"
 customer.token # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.create_funding_sources_token_for_customer(customer_url)
-customer.token # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node

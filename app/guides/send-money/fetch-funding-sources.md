@@ -87,11 +87,6 @@ account_url = 'https://api.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f2
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 funding_sources = account_token.get "#{account_url}/funding-sources"
 funding_sources._embedded['funding-sources'][0].name # => "ABC Bank Checking"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-funding_sources = DwollaSwagger::FundingsourcesApi.get_account_funding_sources(account_url)
-# Access desired information in response object fields
-p funding_sources._embedded # => Ruby Hash of _embedded contents in schema
 ```
 ```javascript
 var accountUrl = 'https://api-sandbox.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1';
@@ -109,11 +104,6 @@ account_url = 'https://api.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f2
 funding_sources = account_token.get('%s/funding-sources' % account_url)
 funding_sources.body['_embedded']['funding-sources'][0]['name'] # => 'ABC Bank Checking'
 
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-fs_api = dwollaswagger.FundingsourcesApi(client)
-funding_sources = fs_api.get_account_funding_sources(account_url)
-# Access desired information in response object fields
-print(funding_sources._embedded) # => Python Dict of _embedded contents in schema
 ```
 ```php
 <?php

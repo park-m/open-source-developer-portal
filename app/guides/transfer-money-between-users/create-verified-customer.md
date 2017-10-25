@@ -61,10 +61,6 @@ request_body = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "customers", request_body
 customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-customer # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
 ```javascript
 var requestBody = {
@@ -109,11 +105,6 @@ request_body = {
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
 customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-customers_api = dwollaswagger.CustomersApi(client)
-customer = customers_api.create(body = request_body)
-customer # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 ```php
 <?php

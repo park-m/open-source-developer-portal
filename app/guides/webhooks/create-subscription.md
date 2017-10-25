@@ -36,10 +36,6 @@ request_body = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 subscription = app_token.post "webhook-subscriptions", request_body
 subscription.response_headers[:location] # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-subscription = DwollaSwagger::WebhooksubscriptionsApi.create(:body => request_body)
-subscription # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
 ```
 ```javascript
 var requestBody = {
@@ -60,11 +56,6 @@ request_body = {
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 retries = app_token.post('webhook-subscriptions', request_body)
 retries.body['total'] # => 1
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-webhook_api = dwollaswagger.WebhooksubscriptionsApi(client)
-subscription = webhook_api.create(body = request_body)
-subscription # => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 ```
 ```php
 <?php
@@ -107,10 +98,6 @@ webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 webhook_subscription = app_token.get webhook_subscription_url
 webhook_subscription.created # => 2015-10-28T16:20:47+00:00
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-webhook_subscription = DwollaSwagger::WebhooksubscriptionApi.id webhook_subscription_url
-webhook_subscription.created # => 2015-10-28T16:20:47+00:00
 ```
 ```javascript
 var webhookSubscriptionUrl = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216';
@@ -125,11 +112,6 @@ webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 webhook_subscription = app_token.get(webhook_subscription_url)
 webhook_subscription.body['created'] # => '2015-10-28T16:20:47+00:00'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-webhook_api = dwollaswagger.WebhooksubscriptionsApi(client)
-retrieved = webhook_api.id(webhook_subscription_url)
-retrieved.created # => 2015-10-28T16:20:47+00:00
 ```
 ```php
 <?php

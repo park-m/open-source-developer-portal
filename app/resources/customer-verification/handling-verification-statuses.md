@@ -59,10 +59,6 @@ request_body = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post customer_url, request_body
 customer.id # => "132681fa-1b4d-4181-8ff2-619ca46235b1"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.update_customer(customer_url, :body => request_body)
-customer.id # => "132681fa-1b4d-4181-8ff2-619ca46235b1"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
@@ -108,11 +104,6 @@ request_body = {
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
 customer.body.id # => '132681fa-1b4d-4181-8ff2-619ca46235b1'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-customers_api = dwollaswagger.CustomersApi(client)
-customer = customers_api.update_customer(customer_url, body = request_body)
-customer.id # => '132681fa-1b4d-4181-8ff2-619ca46235b1'
 ```
 ```php
 <?php
@@ -254,10 +245,6 @@ document_url = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 document = app_token.get document_url
 document.failureReason # => "ScanNotReadable"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-document = DwollaSwagger::DocumentsApi.get_document(document_url)
-document.failureReason # => "ScanNotReadable"
 ```
 ```javascript
 var documentUrl = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0';
@@ -274,11 +261,6 @@ document_url = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 documents = app_token.get(document_url)
 documents.body['failureReason'] # => 'ScanNotReadable'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-documents_api = dwollaswagger.DocumentsApi(client)
-document = documents_api.get_customer(document_url)
-document.failureReason # => "ScanNotReadable"
 ```
 ```php
 <?php

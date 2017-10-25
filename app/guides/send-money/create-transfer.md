@@ -67,10 +67,6 @@ transfer_request = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = account_token.post "transfers", transfer_request
 transfer.response_headers[:location] # => "https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.create(:body => transfer_request)
-transfer # => "https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 ```
 ```javascript
 var transferRequest = {
@@ -121,11 +117,6 @@ transfer_request = {
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 transfer = account_token.post('transfers', transfer_request)
 transfer.headers['location'] # => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
-transfer = transfers_api.create(body = transfer_request)
-transfer # => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 ```
 ```php
 <?php

@@ -86,10 +86,6 @@ request_body = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post "customers", request_body
 customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-customer # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
 ```python
 request_body = {
@@ -112,11 +108,6 @@ request_body = {
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
 customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-customers_api = dwollaswagger.CustomersApi(client)
-customer = customers_api.create(body = request_body)
-customer # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 ```javascript
 var requestBody = {
@@ -215,10 +206,6 @@ customer_url = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.get customer_url
 customer.status # => "verified"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.get_customer(customer_url)
-customer.status # => "verified"
 ```
 ```php
 <?php
@@ -236,11 +223,6 @@ customer_url = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.get(customer_url)
 customer.body['status']
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-customers_api = dwollaswagger.CustomersApi(client)
-customer = customers_api.get_customer(customer_url)
-customer.status # => 'verified'
 ```
 ```javascript
 var customerUrl = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
