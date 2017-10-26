@@ -64,11 +64,6 @@ transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = account_token.get transfer_url
 transfer.status # => "pending"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.by_id(transfer_url)
-# Access desired information in response object fields
-transfer.status # => "pending"
 ```
 ```javascript
 var transferUrl = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
@@ -85,11 +80,6 @@ transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 transfer = account_token.get(transfer_url)
 transfer.body['status'] # => 'pending'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
-transfer = transfers_api.by_id(transfer_url)
-transfer.status # => 'pending'
 ```
 ```php
 <?php

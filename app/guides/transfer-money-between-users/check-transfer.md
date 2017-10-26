@@ -49,10 +49,6 @@ transfer_url = 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 transfer = app_token.get transfer_url
 transfer.status # => "pending"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.by_id(transfer_url)
-transfer.status # => "pending"
 ```
 ```php
 <?php
@@ -71,11 +67,6 @@ transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9
 # For Access API applications, an app_token can be used for this endpoint. (https://docsv2.dwolla.com/#application-authorization)
 transfer = app_token.get(transfer_url)
 transfer.body['status'] # => 'pending'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
-transfer = transfers_api.by_id(transfer_url)
-transfer.status # => 'pending'
 ```
 ```javascript
 var transferUrl = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';

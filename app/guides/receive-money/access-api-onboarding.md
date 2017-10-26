@@ -47,9 +47,6 @@ request_body = {
 new_customer = account_token.post "customers", request_body
 new_customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-new_customer = DwollaSwagger::CustomersApi.create(:body => request_body)
-p new_customer # => "https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c"
 ```
 ```javascript
 var requestBody = {
@@ -77,10 +74,6 @@ request_body = {
 new_customer = account_token.post('customers', request_body)
 new_customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
 
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-customers_api = dwollaswagger.CustomersApi(client)
-new_customer = customers_api.create(body = request_body)
-print(new_customer) # => 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8ae1c'
 ```
 ```php
 <?php
@@ -148,10 +141,6 @@ customer_url = 'https://api-sandbox.dwolla.com/customers/247b1bd8-f5a0-4b71-a898
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = account_token.post "#{customer_url}/iav-token"
 customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-customer = DwollaSwagger::CustomersApi.get_customer_iav_token(customer_url)
-customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ```
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
@@ -169,11 +158,6 @@ customer_url = 'http://api.dwolla.com/customers/247b1bd8-f5a0-4b71-a898-f62f67b8
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = account_token.post('%s/iav-token' % customer_url)
 customer.body['token'] # => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-customers_api = dwollaswagger.CustomersApi(client)
-token = customers_api.get_customer_iav_token(customer_url)
-print token['token'] # => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 ```
 ```php
 <?php
@@ -280,10 +264,6 @@ request_body = {
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 transfer = account_token.post "transfers", request_body
 transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.create(:body => request_body)
-transfer # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 ```
 ```javascript
 var requestBody = {
@@ -334,11 +314,6 @@ request_body = {
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 transfer = account_token.post('transfers', request_body)
 transfer.headers['location'] # => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
-transfer = transfers_api.create(body = request_body)
-transfer # => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 ```
 ```php
 <?php
