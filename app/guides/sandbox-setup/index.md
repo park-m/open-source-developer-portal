@@ -29,7 +29,7 @@ The Sandbox environment does not replicate any ACH processes, so a `pending` tra
 
 ## Sandbox setup
 
-During Sandbox account creation, Dwolla will associate a funding source, add $1000 to the account balance, and create an application. Once your account is created, you'll be redirected to our Sandbox Dashboard at `https://dashboard-sandbox.dwolla.com/` where you can view your API key and secret and [generate an OAuth access token](/resources/token-generator.html).
+During Sandbox account creation, Dwolla will associate a funding source, add $5000 to the account balance, and create an application. Once your account is created, you'll be redirected to our Sandbox Dashboard at `https://dashboard-sandbox.dwolla.com/` where you can view your API key and secret and [generate an OAuth access token](/resources/token-generator.html).
 
 <a href="https://accounts-sandbox.dwolla.com" target="_blank" class="btn secondary large">Create your Sandbox account</a>
 
