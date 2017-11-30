@@ -26,3 +26,19 @@
 }());
 
 // Place any jQuery/helper plugins in here.
+
+/**
+ * AnchorJS v4.1.0 options and selector
+ */
+
+(function () {
+  'use strict';
+
+  anchors.options = {
+    placement: 'right',
+    visible: 'hover'
+  }
+
+  anchors.add('.cnt-two-col__content > h1, .cnt-two-col__content > h2, .cnt-two-col__content > h3, .cnt-two-col__content > h4, .cnt-two-col__content > h5, .cnt-two-col__content > h6');
+
+})();
