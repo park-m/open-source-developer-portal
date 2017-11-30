@@ -5,5 +5,8 @@
     "normalize-css": "~3.0.1",
     "jquery": "~1.11.1",
     "modernizr": "~2.8.3"
+  },
+  "devDependencies": {
+    "anchor-js": "^4.1.0"
   }
 }
