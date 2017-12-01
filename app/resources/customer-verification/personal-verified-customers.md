@@ -7,11 +7,38 @@ weight: 0
 description: "How to verify a personal customer before sending a bank transfer with Dwolla's ACH API."
 ---
 
-# Personal verified Customers
+# Personal verified Customer
 
-### Create a verified personal Customer
+## Create a personal verified Customer
 
-To create a verified personal Customer, use the [create a customer](https://docsv2.dwolla.com/#create-a-customer) endpoint:
+To create a personal verified Customer, use the [create a Customer](https://docsv2.dwolla.com/#create-a-customer) endpoint. A personal verified Customer is determined by setting the value of the `type` request parameter to `personal` and including additional fields required for identifying the individual
+
+## Events
+
+As a developer, you can expect these events to be triggered when a personal verified Customer is successfully created and systematically verified:
+
+1. `customer_created`
+2. `customer_verified`
+
+## Required parameters - personal verified Customer
+
+| Parameter | Required | Type | Description |
+|----------------|-------------|---------|----------------|
+| firstName | yes | string | Individual’s legal first name. |
+| lastName | yes | string | Individual’s legal last name. |
+| email | yes | string | Customer’s email address. |
+| type | yes | string | Type of identity verified Customer. Value of `personal` for individual. |
+| address1 | yes | string | Street number, street name of individual’s physical address. |
+| address2 | no | string | Apartment, floor, suite, bldg # of individual’s physical address. |
+| city | yes | string | City of individual’s physical address. |
+| state | yes | string | Two-letter US state or territory abbreviation code of individual’s physical address. |
+| postalCode | yes | string | Customer’s US five-digit ZIP or ZIP + 4 code. |
+| dateOfBirth | yes | string | Customer’s date of birth. Must be 18 years of age with format of `YYYY-MM-DD`. |
+| ssn | yes | string | Last four-digits of individual’s social security number. |
+
+Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be an HTTP 201/Created with the URL of the new Customer resource contained in the Location header.
+
+### Request and response
 
 ```raw
 POST https://api-sandbox.dwolla.com/customers
@@ -22,7 +49,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
   "firstName": "John",
   "lastName": "Doe",
-  "email": "johndoe@nomail.net",
+  "email": "johndoe@email.net",
   "ipAddress": "10.10.10.10",
   "type": "personal",
   "address1": "99-99 33rd St",
@@ -36,6 +63,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 HTTP/1.1 201 Created
 Location: https://api.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
 ```
+
 ```php
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
@@ -62,6 +90,7 @@ $customer = $customersApi->create([
 $customer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ?>
 ```
+
 ```ruby
 request_body = {
   :firstName => 'John',
@@ -87,6 +116,7 @@ request_body = {
 customer = app_token.post "customers", request_body
 customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
+
 ```python
 request_body = {
   'firstName': 'John',
@@ -109,6 +139,7 @@ request_body = {
 customer = app_token.post('customers', request_body)
 customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
+
 ```javascript
 var requestBody = {
   firstName: 'John',
@@ -132,15 +163,11 @@ appToken
   .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 ```
 
-You’ll need to provide the Customer’s full name, email address, home address, date of birth, and the last four digits of their taxpayer identification number (for individuals, this is their Social Security Number).
-
-Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be a HTTP 201/Created with the URL of the new Customer resource contained in the `Location` header.
-
-### Check the status of the personal Customer
+## Check the status of the personal verified Customer
 
 The successful creation of a Customer doesn’t necessarily mean the Customer is verified. When a Customer has been successfully verified by Dwolla, their status will be set to `verified`.
 
-Let’s check to see if the Customer was successfully verified or not. We are going to use the location of the Customer resource that we just created, which is in `new_customer`.
+Let’s check to see if the Customer was successfully verified or not. We are going to use the location of the Customer resource that was just created, which is in `new_customer`.
 
 ```raw
 GET https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
@@ -200,42 +227,16 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
   "phone": "5554321234"
 }
 ```
-```ruby
-customer_url = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-customer = app_token.get customer_url
-customer.status # => "verified"
-```
-```php
-<?php
-$customerUrl = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
+## Next steps
 
-$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+Congrats! Our Customer was successfully verified!
 
-$customer = $customersApi->getCustomer($customerUrl);
-$customer->status; # => "verified"
-?>
-```
-```python
-customer_url = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+However, if the Customer was unable to be verified on the initial flow, they will given a verification status of either `retry`, `document`, or `suspended. Continue reading for instructions on [handling various Customer verification statuses](https://developers.dwolla.com/resources/customer-verification/handling-verification-statuses.html) and guidelines for providing additional information to verify these Customers.
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-customer = app_token.get(customer_url)
-customer.body['status']
-```
-```javascript
-var customerUrl = 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F';
+***
 
-appToken
-  .get(customerUrl)
-  .then(res => res.body.status); // => 'verified'
-```
+#### View
 
-Our Customer was successfully verified! Other Customers, however, may require additional verification. Continue reading for instructions on providing additional information to verify these Customers.
-
-* * *
-
-#### View:
-
-*   [Handling verification statuses](/resources/customer-verification/handling-verification-statuses.html)
+* [Business verified Customer](/resources/customer-verification/business-verified-customers.html) creation and verification
+* [Handling verification statuses](/resources/customer-verification/handling-verification-statuses.html)  for personal verified Customers.

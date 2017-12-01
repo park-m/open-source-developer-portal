@@ -25,7 +25,7 @@ The Sandbox environment is a complete replica of the Dwolla production environme
 
 Unlike balance sourced transfers, which are processed instantaneously, bank-sourced transfers exist in the pending state for a few business days until they are `processed`, `failed`, `cancelled`, or `reclaimed`.
 
-The Sandbox environment does not replicate any ACH processes, so a `pending` transfer will not clear or fail automatically after a few business days as it would in production. It will simply remain in the `pending` state indefinitely. Reference our [testing resource article](/resources/testing.html) for more information on how-to simulate bank transfer processing in the Sandbox environemnt.
+The Sandbox environment does not replicate any ACH processes, so a `pending` transfer will not clear or fail automatically after a few business days as it would in production. It will simply remain in the `pending` state indefinitely. Reference our [testing resource article](/resources/testing.html) for more information on how-to simulate bank transfer processing in the Sandbox environment.
 
 ## Sandbox setup
 
