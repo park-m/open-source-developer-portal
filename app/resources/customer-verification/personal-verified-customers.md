@@ -11,7 +11,7 @@ description: "How to verify a personal customer before sending a bank transfer w
 
 ## Create a personal verified Customer
 
-To create a personal verified Customer, use the [create a Customer](https://docsv2.dwolla.com/#create-a-customer) endpoint. A personal verified Customer is determined by setting the value of the `type` request parameter to `personal` and including additional fields required for identifying the individual
+To create a personal verified Customer, use the [create a Customer](https://docsv2.dwolla.com/#create-a-customer) endpoint. A personal verified Customer is determined by setting the value of the `type` request parameter to `personal` and including additional fields required for identifying the individual.
 
 ## Events
 
@@ -36,9 +36,9 @@ As a developer, you can expect these events to be triggered when a personal veri
 | dateOfBirth | yes | string | Customer’s date of birth. Must be 18 years of age with format of `YYYY-MM-DD`. |
 | ssn | yes | string | Last four-digits of individual’s social security number. |
 
-Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be an HTTP 201/Created with the URL of the new Customer resource contained in the Location header.
+Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be an HTTP 201/Created with the URL of the new Customer resource contained in the `Location` header.
 
-### Request and response
+### Request and response (view schema in 'raw')
 
 ```raw
 POST https://api-sandbox.dwolla.com/customers
@@ -68,7 +68,7 @@ Location: https://api.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
-$customer = $customersApi->create([
+$newCustomer = $customersApi->create([
   'firstName' => 'John',
   'lastName' => 'Doe',
   'email' => 'jdoe@nomail.net',
@@ -87,11 +87,12 @@ $customer = $customersApi->create([
   'ssn' => '1234'
 ]);
 
-$customer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+$newCustomer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ?>
 ```
 
 ```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   :firstName => 'John',
   :lastName => 'Doe',
@@ -112,12 +113,12 @@ request_body = {
   :ssn => '1234'
 }
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-customer = app_token.post "customers", request_body
-customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+new_customer = app_token.post "customers", request_body
+new_customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
 ```
 
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
 request_body = {
   'firstName': 'John',
   'lastName': 'Doe',
@@ -135,9 +136,8 @@ request_body = {
   'ssn': '1234'
 }
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-customer = app_token.post('customers', request_body)
-customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+new_customer = app_token.post('customers', request_body)
+new_customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 ```
 
 ```javascript
@@ -165,7 +165,7 @@ appToken
 
 ## Check the status of the personal verified Customer
 
-The successful creation of a Customer doesn’t necessarily mean the Customer is verified. When a Customer has been successfully verified by Dwolla, their status will be set to `verified`.
+The successful creation of a Customer doesn’t necessarily mean the Customer is verified and eligible to send or receive funds. When a Customer has been successfully verified by Dwolla, their status will be set to `verified`.
 
 Let’s check to see if the Customer was successfully verified or not. We are going to use the location of the Customer resource that was just created, which is in `new_customer`.
 
@@ -232,7 +232,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 Congrats! Our Customer was successfully verified!
 
-However, if the Customer was unable to be verified on the initial flow, they will given a verification status of either `retry`, `document`, or `suspended. Continue reading for instructions on [handling various Customer verification statuses](https://developers.dwolla.com/resources/customer-verification/handling-verification-statuses.html) and guidelines for providing additional information to verify these Customers.
+However, if the Customer was unable to be verified on the initial flow, they will given a verification status of either `retry`, `document`, or `suspended`. Continue reading for instructions on [handling various Customer verification statuses](https://developers.dwolla.com/resources/customer-verification/handling-verification-statuses.html) and guidelines for providing additional information to verify these Customers.
 
 ***
 

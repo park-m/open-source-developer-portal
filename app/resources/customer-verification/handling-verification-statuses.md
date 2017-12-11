@@ -15,21 +15,22 @@ A Customer’s verification status is determined by an identity verification sco
 
 It is recommended to have an active webhook subscription to listen for Customer verification related events. Reference the table below for Customer verification statuses and the related events.
 
-## Verification Statuses
+### Verification statuses
 
 | Customer status | Event | Description |
-| verified | customer_verified | The identifying information submitted was sufficient in verifying the Customer account. | 
-| retry | customer_reverification_needed | The initial identity verification attempt failed because the information provided did not satisfy Dwolla’s verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with a POST request. All fields are required on the retry attempt. If the additional attempt fails, the resulting status will be either `document` or `suspended`. |
-| document | customer_verification_document_needed | Dwolla requires additional documentation to identify the Customer in the document status. Once a document is uploaded it will be reviewed for verification. |
+|-----------------|-------|-------------|
+| verified | customer_verified | The identifying information submitted was sufficient in verifying the Customer account. |
+| retry | customer\_reverification\_needed | The initial identity verification attempt failed because the information provided did not satisfy Dwolla’s verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with a POST request. All fields are required on the retry attempt. If the additional attempt fails, the resulting status will be either `document` or `suspended`. |
+| document | customer\_verification\_document\_needed | Dwolla requires additional documentation to identify the Customer in the document status. Once a document is uploaded it will be reviewed for verification. |
 | suspended | customer_suspended | The Customer is suspended and may neither send nor receive funds. Contact Account Management for more information. |
 
-## Testing verification statuses in Sandbox:
+### Testing verification statuses in Sandbox:
 
 Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://docsv2.dwolla.com/#update-a-customer) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](https://developers.dwolla.com/resources/testing.html#simulate-document-upload-approved-and-failed-events) resource article.
 
-### Handling status: retry
+## Handling status: `retry`
 
-A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual (personal) or authorized representative (business)  SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes. **Please note:** you need to gather **new** information if the Customer is placed into the `retry` status; simply passing the same information will result in the same insufficient scores. All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
+A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual (personal) or authorized representative (business) SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes. **Please note:** you need to gather **new** information if the Customer is placed into the `retry` status; simply passing the same information will result in the same insufficient scores. All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
 
 
 ```raw
@@ -55,6 +56,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer_url = 'https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1'
 request_body = {
       "firstName" => "John",
@@ -71,7 +73,6 @@ request_body = {
             "ssn" => "123-45-6789"
 }
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 customer = app_token.post customer_url, request_body
 customer.id # => "132681fa-1b4d-4181-8ff2-619ca46235b1"
 ```
@@ -102,6 +103,7 @@ appToken
 ```
 
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer_url = 'https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1'
 request_body = {
   "firstName": "John",
@@ -118,7 +120,6 @@ request_body = {
   "ssn": "123-45-6789"
 }
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer = app_token.post('customers', request_body)
 customer.body.id # => '132681fa-1b4d-4181-8ff2-619ca46235b1'
 ```
@@ -146,15 +147,15 @@ print($retryCustomer); # => 132681fa-1b4d-4181-8ff2-619ca46235b1
 ?>
 ```
 
-Check the Customer’s status again. The Customer will either be `verified` or in the `document` or `suspended` state of verification.
+Check the Customer’s status again. The Customer will either be in the `verified`, `document`, or `suspended` state of verification.
 
-### Handling status: `document`
+## Handling status: `document`
 
 If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. The types of documents that are required will vary depending on if the user is created as a `personal` vs. `business` `verified Customer`. Use the [create a document](https://docsv2.dwolla.com/#create-a-document) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
 
-#### Document types
+### Document types
 
-##### Individuals or Authorized Representatives 
+##### Individuals or Authorized Representatives
 
 A scanned photo of the Customer's identifying document can be specified as documentType: `passport`, `license` (state issued driver's license), or `idCard` (other U.S. government-issued photo id card).
 
@@ -166,15 +167,15 @@ Documents that are used to help identify a business are specified as documentTyp
 * Limited Liability Corporation (LLC), Corporation: EIN Letter (IRS-issued SS4 confirmation letter).
 * Sole Proprietorship: One or more of the following, as applicable to your sole proprietorship: Fictitious Business Name Statement; EIN documentation (IRS-issued SS4 confirmation letter); Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
 
-#### Determining verification documents needed
+### Determining verification documents needed
 
-When a Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docsv2.dwolla.com/#retrieve-a-customer) which will be used by an application to determine if documentation is needed. For business `verified Customers`, different links can be returned depending on whether or not the documents are needed for an authorized representative, the business, or both the authorized representative and business. Refer to the table below for the list of possible links and their description.
+When a Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docsv2.dwolla.com/#retrieve-a-customer) which will be used by an application to determine if documentation is needed. For business `verified Customers`, different links can be returned depending on whether or not documents are needed for an authorized representative, the business, or both the authorized representative and business. Refer to the table below for the list of possible links and their description.
 
 | Link name | Description |
 |---------------|----------|
-| verify-with-document | Identifies if documents are needed only for an individual |
-| verify-business-with-document | Identifies if documents are needed only for a business |
-| verify-authorized-representative-and-business-with-document | Identifies if documents are needed for both the individual and business |
+| verify-with-document | Identifies if documents are needed only for an individual or authorized representative. |
+| verify-business-with-document | Identifies if documents are needed only for a business. |
+| verify-authorized-representative-and-business-with-document | Identifies if documents are needed for both the individual and business. |
 
 ##### Example response
 
@@ -223,7 +224,7 @@ When a Customer is placed in the `document` verification status, Dwolla will ret
 }
 ```
 
-#### Uploading a document
+### Uploading a document
 
 To upload a photo of the document, you’ll initiate a multipart form-data POST request from your backend server to `https://api.dwolla.com/customers/{id}/documents`. The file must be either a .jpg, .jpeg, .png, .tif, or .pdf. Files must be no larger than 10MB in size.
 
@@ -270,9 +271,9 @@ appToken
 ```
 
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 customer_url = 'https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1'
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 document = app_token.post('%s/documents' % customer_url, file = open('mclovin.jpg', 'rb'), documentType = 'license')
 document.headers['location'] # => 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0'
 ```
@@ -290,15 +291,15 @@ Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275af
 
 You’ll also get a webhook with a `customer_verification_document_uploaded` event to let you know the document was successfully uploaded.
 
-#### Document review process
+### Document review process
 
 Once created, the document will be reviewed by Dwolla. When our team has made a decision, which may take up to 1-2 business days to approve or reject, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
 
-If the document was sufficient, the Customer will be verified. If not, we may need additional documentation.
+If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](/resources/customer-verification/handling-verification-statuses.html#determining-verification-documents-needed) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
 
 If the document was found to be fraudulent or doesn’t match the identity of the Customer, the Customer will be suspended.
 
-#### Document failure
+### Document failure
 
 A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` which corresponds to one of the following values:
 
@@ -307,7 +308,7 @@ A document can fail if, for example, the Customer uploaded the wrong type of doc
 * `ScanIdTypeNotSupported` - An ID was uploaded, but it is not a form of ID we accept
 * `ScanNameMismatch` - The name on the ID does not match the name on the account
 
-##### Request and response:
+##### Request and response
 
 ```raw
 GET https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
@@ -331,9 +332,9 @@ Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR
 ```
 
 ```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 document_url = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0'
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 document = app_token.get document_url
 document.failureReason # => "ScanNotReadable"
 ```
@@ -349,9 +350,9 @@ appToken
 ```
 
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 document_url = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0'
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 documents = app_token.get(document_url)
 documents.body['failureReason'] # => 'ScanNotReadable'
 ```

@@ -17,17 +17,15 @@ First, you should have an active [webhook subscription](https://docsv2.dwolla.co
 We’ll outline the verification process for both `personal` and `business` Customers.
 
 1. [Personal verified Customer](/resources/customer-verification/personal-verified-customers.html)
-* Create a personal verified Customer
-* Check the status of the personal Customer
-
+  * Create a personal verified Customer
+  * Check the status of the personal Customer
 2. [Business verified Customer](/resources/customer-verification/business-verified-customers.html)
-* Create a business verified Customer
-* Check the status of the business Customer
-
+  * Create a business verified Customer
+  * Check the status of the business Customer
 3. [Handling verification statuses](/resources/customer-verification/handling-verification-statuses.html)
-* If necessary, `retry` verification
-* If necessary, upload a `document`
-* Overview of `suspended` status
+  * If necessary, `retry` verification
+  * If necessary, upload a `document`
+  * Overview of `suspended` status
 
 * * *
 
