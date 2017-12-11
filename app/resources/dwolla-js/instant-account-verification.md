@@ -79,7 +79,7 @@ There are a subset of banks that are found in the initial bank search page that 
 
 #### Non-preferred Flow
 
-There is a list of banks that aren't found in the bank search, generally these are smaller financial institutions. As a result we'll prompt the user to input the account and routing number of their bank. Once they click agree and continue, we'll attempt to lookup a bank with the provided information. If a bank is found, we'll return a screen for the user to authenticate using their online banking credentials
+There is a list of banks that aren't found in the bank search, generally these are smaller financial institutions. As a result we'll prompt the user to input the account and routing number of their bank. Once they click agree and continue, we'll attempt to lookup a bank with the provided information. If a bank is found, we'll return a screen for the user to authenticate using their online banking credentials.
 
 ## Options and customization
 
