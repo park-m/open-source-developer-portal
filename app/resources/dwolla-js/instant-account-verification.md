@@ -10,6 +10,7 @@ description: "Integrate instant bank verification for developers using the Dwoll
 # Dwolla.js
 
 ## Using Dwolla.js for Instant Account Verification (IAV)
+
 For Access API partners, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their customer's bank or credit union account. By calling a separate function `dwolla.iav.start()`, the Access API partner application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as:
 
 * `stylesheets` - a list of CSS stylesheets for styling the IAV flow
@@ -47,6 +48,7 @@ dwolla.iav.start('8zN400zyPUobbdmeNfhTGH2Jh5JkFREJa9YBI8SLXp0ERXNTMT', {
 ```
 
 ## Handling IAV errors
+
 IAV related errors are returned either as user-facing messages within the IAV flow, or triggered through the dwolla.js callback. User-facing messages are displayed in red text at the top of the bank login screen informing the user there was an issue with connecting the associated bank account. Error callbacks will trigger letting your app know of errors that can't be fixed by the user within the flow.
 
 Error callbacks will contain a similar JSON error response body as [common errors](https://docsv2.dwolla.com/#errors) in the API, which includes a top-level error `code` and a `message`. Reference the following list of error callbacks:
@@ -58,7 +60,7 @@ Error callbacks will contain a similar JSON error response body as [common error
 | UnsupportedBank | Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution. | The customer's bank is not supported by the IAV flow. |
 | RateLimitReached | Sorry, we’re having trouble logging into your account. Please try a different account. | The customer exceeded the max number of two IAV attempts with the same bank. The customer must wait 30 minutes in order to re-authenticate.  |
 
-##### **Example error callback**
+#### **Example error callback**
 
 ```noselect
 {
@@ -67,19 +69,36 @@ Error callbacks will contain a similar JSON error response body as [common error
 }
 ```
 
+## IAV user experience
+
+Financial institutions have different procedures when it comes to online logins. There are two flows to be aware of in terms of user experience: **Preferred** and **Non-preferred**. Your Customers may fall into either one of these two flows when verifying their bank account within the IAV experience.
+
+#### Preferred Flow
+
+There are a subset of banks that are found in the initial bank search page that will immediately prompt the user to login with the associated bank account. These are some of the larger financial institutions in the United States, and are all supported by our IAV flow. If your Customer is not banking with one of these institutions, they can search for their bank in the search bar.
+
+#### Non-preferred Flow
+
+There is a list of banks that aren't found in the bank search, generally these are smaller financial institutions. As a result we'll prompt the user to input the account and routing number of their bank. Once they click agree and continue, we'll attempt to lookup a bank with the provided information. If a bank is found, we'll return a screen for the user to authenticate using their online banking credentials.
+
 ## Options and customization
+
 #### `microDeposits`
+
 Your application can present the micro-deposit method of bank verification throughout the IAV flow by setting the `microDeposits` option to *true*. This option gives the user the ability to initially select either the micro-deposit method of bank verification or IAV, as well as fallback to selecting the micro-deposit method of bank verification if un-successful connecting a bank through the IAV flow.
 
 ![Screenshot of micro-deposit fallback](/images/microdeposits-fallback.png "fallback to micro-deposits")
 
 #### `fallbackToMicroDeposits`
+
 If your application sets the `fallbackToMicroDeposits` option to *true*, a fallback selection screen will appear after **two** failed attempts if there was an issue with connecting a bank using IAV. This selection screen asks the user to choose from either the traditional micro-deposit method of bank verification or re-attempt the IAV flow choosing a different financial institution.
 
 #### `backButton`
+
 By default, a back button will **not** be displayed throughout the IAV flow. If your application sets the `backButton` option to *true*, a back button will appear in the lower left corner of the container throughout the IAV flow.
 
 #### `subscriber`
+
 An optional `subscriber` function can be used if your application is wanting to receive additional information on where the user is within the IAV flow, as well as if a user-facing message was presented to the user. `subscriber` is a function that will be called with an object containing a `currentPage` and an optional `error` attribute. `currentPage` will be a string value that identifies what page the user is on in the IAV flow. If an error occurs, the `error` attribute will be returned along with `currentPage`. `error` will be a JSON object, which includes a top-level error `code` and a `message` (similar to [common errors](https://docsv2.dwolla.com/#errors) in the API). Reference the following table for possible values:
 
 |     Attribute     | Value |
@@ -100,11 +119,13 @@ An optional `subscriber` function can be used if your application is wanting to 
 ```
 
 #### `stylesheets`
+
 Dwolla provides a list of CSS classes available for styling certain elements of the IAV flow. These elements can be easily customized to match the look and feel of your application, and are included within the `options` JavaScript object of the function dwolla.iav.start(). You can specify one or many stylesheets as a list within the `stylesheets` attribute. By default, the elements within your specified container are responsive to any change in screen size.
 
 <a href="https://www.dwolla.com/dwollajs-bank-verification" target="_blank" class="btn secondary medium">Demo Dwolla.js</a>
 
 #### List of CSS classes
+
 ```cssnoselect
 /* Available css classes for customization*/
 .dwolla-iav-text-box,
@@ -131,7 +152,7 @@ Dwolla provides a list of CSS classes available for styling certain elements of 
 
 #### View:
 
-*   [Funding source verification - IAV](/resources/funding-source-verification/instant-account-verification.html)
-*   [Dwolla.js - Overview](/resources/dwolla-js.html)
-*   [Add a bank account](/resources/dwolla-js/add-a-bank-account.html)
-*   [On-demand bank transfers](/resources/dwolla-js/on-demand-bank-transfers.html)
+* [Funding source verification - IAV](/resources/funding-source-verification/instant-account-verification.html)
+* [Dwolla.js - Overview](/resources/dwolla-js.html)
+* [Add a bank account](/resources/dwolla-js/add-a-bank-account.html)
+* [On-demand bank transfers](/resources/dwolla-js/on-demand-bank-transfers.html)

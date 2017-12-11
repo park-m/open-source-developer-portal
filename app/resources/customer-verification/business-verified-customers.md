@@ -7,17 +7,49 @@ weight: 1
 description: "How to verify a business customer before sending a bank transfer with Dwolla's ACH API."
 ---
 
-# Business verified Customers
+# Business verified Customer
 
-### Create a verified business Customer
+## Create a business verified Customer
 
-To create a verified business Customer, use the [create a customer](https://docsv2.dwolla.com/#create-a-customer) endpoint:
+To create a business verified Customer, use the [Create a Customer](https://docsv2.dwolla.com/#create-a-customer) endpoint. A business verified Customer is determined by setting the value of the `type` request parameter to `business` and including additional field required for identifying the business, as well as the authorized representative of the business.
+
+## Events
+
+As a developer, you can expect these events to be triggered when a business verified Customer is successfully created and systematically verified:
+
+1. `customer_created`
+2. `customer_verified`
+
+## Required parameters - business verified Customer
+
+| Parameter | Required | Type | Description |
+|----------------|-------------|---------|----------------|
+| firstName | yes | string | Authorized representative’s legal first name. |
+| lastName | yes | string | Authorized representative’s legal last name. |
+| email | yes | string | Authorized representative or business email address. |
+| type | yes | string | Type of identity verified Customer. Value of `business` for business. |
+| address1 | yes | string | Street number, street name of business’ physical address. |
+| address2 | no | string | Apartment, floor, suite, bldg. # of business’ physical address. |
+| city | yes | string | City of business’ physical address. |
+| state | yes | string | Two-letter US state or territory abbreviation code of business’ physical address. |
+| postalCode | yes | string | Business’ US five-digit ZIP or ZIP + 4 code. |
+| dateOfBirth | yes | string | Authorized representative’s date of birth. Must be 18 years of age with format of `YYYY-MM-DD`. |
+| ssn | yes | string | Last four-digits of authorized representative’s social security number. |
+| businessClassification | yes | string | The industry classification id that corresponds to Customer’s business. |
+| businessType | yes | string | Business structure. Possible values are `corporation`, `llc`, `partnership`, and `soleproprietorship`. |
+| businessName | yes | string | Registered business name. |
+| ein | yes | Employer Identification Number. Note: If the businessType is `soleproprietorship` then ein can be omitted from the request. |
+
+Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be a HTTP 201/Created with the URL of the new Customer resource contained in the Location header.
+
+### Request and response
 
 ```raw
 POST https://api-sandbox.dwolla.com/customers
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
-Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+Authorization: Bearer 0Sn0W6kzNic+oWhDbQcVSKLRUpGjIdl/YyrHqrDDoRnQwE7Q
+
 {
   "firstName": "Jane",
   "lastName": "Merchant",
@@ -37,9 +69,11 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+Location: https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
 ```
+
 ```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
 request_body = {
   :firstName => 'Jane',
   :lastName => 'Merchant',
@@ -56,10 +90,11 @@ request_body = {
   :businessName => 'Jane Corp',
   :ein => '12-3456789',
 }
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+
 customer = app_token.post "customers", request_body
-customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5"
 ```
+
 ```javascript
 var requestBody = {
   firstName: 'Jane',
@@ -80,9 +115,11 @@ var requestBody = {
 
 appToken
   .post('customers', requestBody)
-  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
+
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
 request_body = {
   'firstName': 'Jane',
   'lastName': 'Merchant',
@@ -100,10 +137,11 @@ request_body = {
   'ein': '12-3456789'
 }
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+
 customer = app_token.post('customers', request_body)
-customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
+
 ```php
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
@@ -125,77 +163,124 @@ $new_customer = $customersApi->create([
   'ein' => '12-3456789'
 ]);
 
-print($new_customer); # => https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+print($new_customer); # => https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
 ?>
 ```
 
-You’ll need to provide the the a full name, email address, business address, date of birth, and the last four digits of the Social Security Number for the authorized representative of the business. In addition to the authorized representative’s identifying information, you’ll also need to supply information which helps Dwolla identify the business. Required information includes: `businessClassification`, `businessType`, `businessName`, and `ein`.
+## Check the status of the business Customer
 
-Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be a HTTP 201/Created with the URL of the new Customer resource contained in the `Location` header.
-
-### Check the status of the business Customer
-
-Businesses may need to provide additional information to help verify their identity which will likely correspond to a verification status of `document` upon creation. It is important to immediately check the status of the business Customer to determine if additional documentation is needed. When a Customer has been successfully verified by Dwolla, their status will be set to `verified`.
+Businesses may need to provide additional information to help verify their identity. It is important to immediately check the status of the business Customer to determine if additional documentation is needed.
 
 Let’s check to see if the Customer was successfully verified or not. We are going to use the location of the Customer resource that we just created, which is in `new_customer`.
 
+Request:
+
 ```raw
-GET https://api-sandbox.dwolla.com/customers/07D59716-EF22-4FE6-98E8-F3190233DFB8
+GET https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 {
-  "_links": {
-    "self": {
-      "href": "https://api.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
-    }
-  },
-  "id": "AB443D36-3757-44C1-A1B4-29727FB3111C",
-  "firstName": "Jane",
-  "lastName": "Doe",
-  "email": "janedoe@nomail.com",
-  "type": "unverified",
-  "status": "unverified",
-  "created": "2015-09-03T23:56:10.023Z"
+    "_links": {
+        "deactivate": {
+            "href": "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "receive": {
+            "href": "https://api-sandbox.dwolla.com/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "edit-form": {
+            "href": "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5",
+            "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+            "resource-type": "customer"
+        },
+        "edit": {
+            "href": "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "funding-sources": {
+            "href": "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5/funding-sources",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "transfers": {
+            "href": "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "send": {
+            "href": "https://api-sandbox.dwolla.com/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        }
+    },
+    "id": "62c3aa1b-3a1b-46d0-ae90-17304d60c3d5",
+    "firstName": "Jane",
+    "lastName": "Merchant",
+    "email": "janeMerchant@email.com",
+    "type": "business",
+    "status": "document",
+    "created": "2017-12-11T15:17:44.683Z",
+    "address1": "99-99 33rd St",
+    "city": "Some city",
+    "state": "NY",
+    "postalCode": "11101",
+    "businessName": "Jane Corp"
 }
 ```
-```ruby
-customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 
+```ruby
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer_url = 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+
 customer = app_token.get customer_url
-customer.firstName # => "Jane"
+customer.status # => "document"
 ```
+
 ```php
 <?php
-$customerUrl = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C';
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5';
 
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $customer = $customersApi->getCustomer($customerUrl);
-$customer->firstName; # => "Jane"
+$customer->status; # => "document"
 ?>
 ```
+
 ```python
-customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
-
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-customer = app_token.get(customer_url)
-customer.body['firstName']
+customer_url = 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 
+customer = app_token.get(customer_url)
+customer.body['status']
 ```
+
 ```javascript
-var customerUrl = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C';
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5';
 
 appToken
   .get(customerUrl)
-  .then(res => res.body.firstName); // => 'Jane'
+  .then(res => res.body.status); // => 'document'
 ```
 
-Our Customer is created successfully, but there is a verification status of “document”. Continue reading for instructions on [handling Customer verification statuses](/resources/customer-verification/handling-verification-statuses.html) and guidelines for providing additional information to verify this type of Customer.
+## Next steps
 
-* * *
+Our Customer has been created successfully, but it has a verification status of “document”.
 
-#### View:
+Note that while `document` status is not a deal-breaking issue which prevents a business from being eligible to open an account, Dwolla will request for additional information about the entity. As a developer, in order for your users to provide this additional information, you will want to build a way for Customers to upload verification documents. Continue reading for instructions on [handling Customer verification statuses](https://developers.dwolla.com/resources/customer-verification/handling-verification-statuses.html) and guidelines for providing additional information to verify this type of Customer.
 
-*   [Handling verification statuses](/resources/customer-verification/handling-verification-statuses.html)
+***
+
+View
+* [Personal verified Customers](/resources/customer-verification/personal-verified-customers.html) creation and verification
+* [Handling verification statuses](/resources/customer-verification/handling-verification-statuses.html) for Business verified Customers.
