@@ -1,13 +1,10 @@
 # About Dwolla
 
-Dwolla is a software platform that makes it easy to move money between banks. When using Dwolla APIs your software platform can move money between any 2 bank accounts, or network members, with no transaction fees. 
+Dwolla is the ideal platform to move money. When using the Dwolla API your software platform can move money between any 2 bank accounts, verify bank accounts, and store funds on behalf of your users.
 
-Our software platform is compatible with all banks in the United States. The developer documents are designed to support our development partners who are building on top of Dwolla's branded platform (v1) or our white labeled infrastructure (v2).
+Our software platform is compatible with all banks in the United States. The developer documents are designed to support our development partners who are building on top of Dwolla's platform. Our API is a simple unified access point to connect with US banks and credit unions.
 
 The Dwolla API developer portal lives here: https://developers.dwolla.com
-
-Our v1 API documentation is available here: https://docs.dwolla.com/
-Our v2 API documentation is available here: https://docsv2.dwolla.com/
 
 # About the Open Source Developer Portal
 
@@ -32,10 +29,6 @@ As seen here: https://docsv2.dwolla.com/
 ### A SDK directory
 
 As seen here: https://developers.dwolla.com/pages/sdks.html
-
-### The ability to use multiple API versions
-
-As seen here: https://docsv2.dwolla.com/
 
 # dwolla-devportal
 
@@ -76,7 +69,7 @@ Otherwise, if you're deploying to your own repo, make sure you edit the `buildco
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Dwolla
+Copyright (c) 2016-2018 Dwolla
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
